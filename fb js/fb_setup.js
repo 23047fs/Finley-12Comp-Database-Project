@@ -1,8 +1,12 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
+/**************************************************************/
+// fb_initialise()
+// Initialize firebase, connect to the Firebase project.
+// 
+// Find the config data in the Firebase console. Cog wheel > Project Settings > General > Your Apps > SDK setup and configuration > Config
+//
+// Input:  n/a
+// Return: n/a
+/**************************************************************/
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBcR-wxDz2JJXUlqbfOkgofE4nDxqueMvI",
@@ -15,4 +19,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+// This log prints the firebase object to the console to show that it is working.
+// As soon as you have the script working, delete this log.
+console.log("Firebase initialize finished:");
+console.log(firebase);
