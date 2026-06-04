@@ -54,10 +54,10 @@ let scoreBallSpriteArray = [];
 
 function preload() {
     //Loading the images for assets
-    imgSnowBall = loadImage('assets/images/Snowball.png');
-    imgBackground = loadImage('assets/images/Background.png');
-    imgPlayerCat = loadImage('assets/images/Cat.png');
-    imgPlayerTabbyCat = loadImage('assets/images/TabbyCat.png');
+    imgSnowBall = loadImage('/shooter game/assets/images/Snowball.png');
+    imgBackground = loadImage('/shooter game/assets/images/Background.png');
+    imgPlayerCat = loadImage('/shooter game/assets/images/Cat.png');
+    imgPlayerTabbyCat = loadImage('/shooter game/assets/images/TabbyCat.png');
 
 }
 
