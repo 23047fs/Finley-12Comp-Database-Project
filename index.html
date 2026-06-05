@@ -14,27 +14,48 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
-  <!-- firebase end ******************************************-->
+  <!-- Include all your firebase libraries and scripts here -->
   <script src="/fb js/fb_setup.js"></script>
   <script src="/fb js/fb_io.js"></script>
+  <!-- firebase end ******************************************-->
+
 
 </head>
 
 <body>
-    <h1>Welcome</h1>
+  <h1>Welcome</h1>
 
-    
+  <!--Game links-->
+  <a href="/geo game/geo.html">GeoDash Game</a>
+  <a href="/shooter game/game.html">Shooter Game</a>
+  <br>
+  <br>
+  <table>
+    <tr>
+      <th>
 
+        <!--User log in-->
+        <form id="userForm">
+          <!--User name-->
+          <label for="userName">Your User Name:</label>
+          <input type="text" id="userName" name="userName" required />
+          <!--User log in-->
+          <label for="userAge">Your Age:</label>
+          <input type="numebr" min="1" max="125" id="userAge" name="userAge" required />
+          </form>
+          <!--Submit button-->
+          <button onclick="fb_login()">Submit</button>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <!--Highscore data-->
 
+      </td>
+    </tr>
+  </table>
 
-    <a href="/geo game/geo.html">GeoDash Game</a>
-
-    <a href="/shooter game/game.html">Shooter Game</a>
-
-
-
-    <script src=""></script>
-
+  <script src="/fb js/fb_script.js"></script>
 </body>
 
 </html>
