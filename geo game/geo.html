@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- stylesheet start *******************************************-->
-  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="../css/game.css">
   <!-- stylesheet end *******************************************-->
 
   <!-- firebase start ****************************************-->
@@ -27,8 +27,8 @@
   <script src="https://p5play.org/v3/planck.min.js"></script>
   <script src="https://p5play.org/v3/p5play.js"></script>
   <!-- Include all your firebase libraries and scripts here -->
-  <script src="fb js/fb_setup.js"></script>
-  <script src="fb js/fb_io.js"></script>
+  <script src="/fb js/fb_setup.js"></script>
+  <script src="/fb js/fb_io.js"></script>
 
 </head>
 
@@ -37,11 +37,11 @@
 ****************************************************-->
 
 <body>
-  <a href="index.html">Back</a>
-
-
-  <script src="geo game/geo.js"></script>
-  <script src="fb js/fb_script.js"></script>
+  <a href="../index.html">Back</a>
+  <button onclick="fb_login()">Login first to save your highscore</button>
+  <br>
+  <script src="geo.js"></script>
+  <script src="../fb js/fb_script.js"></script>
 </body>
 
 </html>

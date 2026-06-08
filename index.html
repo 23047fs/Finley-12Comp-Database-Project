@@ -15,8 +15,8 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
   <!-- Include all your firebase libraries and scripts here -->
-  <script src="fb js/fb_setup.js"></script>
-  <script src="fb js/fb_io.js"></script>
+  <script src="/fb-js/fb_setup.js"></script>
+  <script src="/fb-js/fb_io.js"></script>
   <!-- firebase end ******************************************-->
 
 
@@ -24,10 +24,10 @@
 
 <body>
   <h1>Welcome</h1>
-
+  <button onclick="fb_login()">Login</button>
   <!--Game links-->
-  <a href="geoGame/geo.html">GeoDash Game</a>
-  <a href="shooterGame/game.html">Shooter Game</a>
+  <a href="geo game/geo.html">GeoDash Game</a>
+  <a href="shooter game/game.html">Shooter Game</a>
   <br>
   <br>
   <table id="mainTable">
@@ -48,7 +48,7 @@
                 <input type="numebr" min="1" max="125" id="userAge" name="userAge" required />
               </form>
               <!--Submit button-->
-              <button onclick="fb_login()">Submit</button>
+              <button onclick="fb_write()">Submit</button>
             </td>
           </tr>
         </table>
@@ -85,7 +85,7 @@
     </tr>
   </table>
 
-  <script src="fb js/fb_script.js"></script>
+  <script src="/fb-js/fb_script.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,40 @@
 /*******************************************************/
 
 /*******************************************************/
+//Firebase
+/*******************************************************/
+
+
+//Get uid
+function save() {
+    let uid = GLOBAL_user["uid"];
+    //Check if logged in
+    if (!uid) {
+        alert("Please log in first");
+        return;
+    }
+    //Check if new score is higher than old one
+    firebase.database().ref('/users/' + uid + '/game').once('value', gameOldScore);
+}
+
+//Read old score
+function gameOldScore(snapshot) {
+    dbData = snapshot.val();
+    //If new score is better replace it 
+    if (dbData < playerScore) {
+        //Save the highscore to database
+        firebase.database().ref('/users/' + uid + '/geoGame').set(playerScore);
+        console.log("Score saved to database");
+    };
+    //If stored highscore is better replace highscore
+    if (dbData > highscore) {
+        highscore = dbData;
+    }
+}
+
+
+
+/*******************************************************/
 // setup()
 /*******************************************************/
 
@@ -402,6 +436,7 @@ function draw() {
         textSize(20);
 
         //Restart
+        save()
         restartButtonFunction();
 
     } else if (screenPhase == "win") {
@@ -427,6 +462,7 @@ function draw() {
         textSize(20);
 
         //Restart
+        save();
         restartButtonFunction();
     };
 };

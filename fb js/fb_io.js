@@ -6,14 +6,6 @@
 let GLOBAL_user;
 //Create listener
 function fb_login() {
-    //Get user information from form
-    let userName = document.getElementById("userName").value;
-    let userAge = document.getElementById("userAge").value;
-    //Check if filled out
-    if (userName == null || userAge == null) {
-        alert("Please fill in the form first");
-        return;
-    }
     authenticationListener = firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
 }
 //Checks if user is logged in, if not use fb_popupLogin
@@ -32,18 +24,10 @@ function fb_popupLogin() {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
         GLOBAL_user = result.user;
-        let uid = result.user.uid;
-        //Get user information from form
-        let userName = document.getElementById("userName").value;
-        let userAge = document.getElementById("userAge").value;
+        let uid = GLOBAL_user["uid"];
         //Create new user in database using uid
         firebase.database().ref('/users/' + uid).set(
             {
-                userName: userName,
-                userAge: userAge,
-                displayName: GLOBAL_user["name"],
-                email: GLOBAL_user["email"],
-                photoURL: GLOBAL_user["photoURL"],
                 role: 'user'
             });
         console.log("New user created");

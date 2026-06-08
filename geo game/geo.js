@@ -10,14 +10,33 @@ console.log("Running the game");
 
 
 // End game code
-function endGame(_player, _obstacle){
-    console.log("Game ended, you got "+score+" points.")
+function endGame(_player, _obstacle) {
+    console.log("Game ended, you got " + score + " points.")
     screenSelector = "end";
     player.remove();
     obstacles.removeAll();
     // Put your database writes here:
+    //Get uid
+    let uid = GLOBAL_user["uid"];
+    //Check if logged in
+    if (!uid) {
+        alert("Please log in first");
+        return;
+    }
+    //Check if new score is higher than old one
+    firebase.database().ref('/users/' + uid + '/geoGame').once('value', geoOldScore);
 }
 
+//Read old score
+function geoOldScore(snapshot) {
+    let uid = GLOBAL_user["uid"];
+    dbData = snapshot.val();
+    if (dbData < score) {
+        //Save the highscore to database
+        firebase.database().ref('/users/' + uid + '/geoGame').set(score);
+        console.log("Score saved to database");
+    };
+}
 
 
 const SCREEN_WIDTH = 400;
@@ -33,33 +52,33 @@ var spawnDist = 0;
 var nextSpawn = 0;
 var score = 0;
 var player;
-  
-var screenSelector = "start";  
+
+var screenSelector = "start";
 
 var obstacles;
 /*******************************************************/
 // setup()
 /*******************************************************/
 function setup() {
-    cnv= new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
-    
+    cnv = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+
     obstacles = new Group();
 
-    floor =  new Sprite(SCREEN_WIDTH/2,  SCREEN_HEIGHT, SCREEN_WIDTH, 4, 's');
+    floor = new Sprite(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 4, 's');
     floor.color = color("black");
     world.gravity.y = 80;
-    
-    document.addEventListener("keydown", 
-        function(event) {
-            if(screenSelector == "start"||screenSelector == "end"){
+
+    document.addEventListener("keydown",
+        function (event) {
+            if (screenSelector == "start" || screenSelector == "end") {
                 screenSelector = "game"
                 resetGame();
-            }else{
-                if(player.y > 184 ){// 184 - found from testing - floor level
+            } else {
+                if (player.y > 184) {// 184 - found from testing - floor level
                     player.vel.y = -20;
                 }
             }
-    });
+        });
 
 }
 
@@ -67,29 +86,29 @@ function setup() {
 // draw()
 /*******************************************************/
 function draw() {
-    if(screenSelector=="game"){
+    if (screenSelector == "game") {
         gameScreen();
-    }else if(screenSelector=="end"){
+    } else if (screenSelector == "end") {
         endScreen();
-    }else if(screenSelector=="start"){
+    } else if (screenSelector == "start") {
         startScreen();
-    }else{
+    } else {
         text("wrong screen - you shouldnt get here", 50, 50);
         console.log("wrong screen - you shouldnt get here")
     }
 }
 
-function newObstacle(){
-    obstacle = new Sprite((SCREEN_WIDTH + 50),  SCREEN_HEIGHT - OBSTACLE_HEIGHT/2, OBSTACLE_WIDTH, OBSTACLE_HEIGHT, 'k');
+function newObstacle() {
+    obstacle = new Sprite((SCREEN_WIDTH + 50), SCREEN_HEIGHT - OBSTACLE_HEIGHT / 2, OBSTACLE_WIDTH, OBSTACLE_HEIGHT, 'k');
     obstacle.color = color("yellow");
     obstacle.vel.x = -10;
-    
+
     obstacles.add(obstacle);
 }
 
 // Main screen functions
 
-function startScreen(){
+function startScreen() {
     background("white");
 
     allSprites.visible = false;
@@ -99,17 +118,17 @@ function startScreen(){
     strokeWeight(4);
     text("Welcome to the game", 50, 50);
     textSize(24);
-    text("Press any key to start", 50, 110);    textSize(24);
+    text("Press any key to start", 50, 110); textSize(24);
     text("Press space to jump", 50, 150);
 }
 
-function gameScreen(){
+function gameScreen() {
     background("#C39BD3");
     allSprites.visible = true;
     score++;
-    if(frameCount> nextSpawn){
+    if (frameCount > nextSpawn) {
         newObstacle();
-        nextSpawn = frameCount + random(10,100);
+        nextSpawn = frameCount + random(10, 100);
     }
     textSize(32);
     fill(255);
@@ -118,7 +137,7 @@ function gameScreen(){
     text(score, 50, 50);
 }
 
-function endScreen(){
+function endScreen() {
     background("white");
 
     allSprites.visible = false;
@@ -128,13 +147,13 @@ function endScreen(){
     strokeWeight(4);
     text("You died! Too bad :-(", 50, 50);
     textSize(24);
-    text("your score was: "+score, 50, 110);
+    text("your score was: " + score, 50, 110);
     textSize(14);
     text("press any key to restart", 50, 150);
 }
 
-function resetGame(){
-    player = new Sprite(PLAYER_WIDTH*1.2,  SCREEN_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT, 'd');
+function resetGame() {
+    player = new Sprite(PLAYER_WIDTH * 1.2, SCREEN_HEIGHT / 2, PLAYER_WIDTH, PLAYER_HEIGHT, 'd');
     player.color = color("purple");
     player.collides(obstacles, endGame);
     score = 0;
