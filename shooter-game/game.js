@@ -30,7 +30,7 @@ function gameOldScore(snapshot) {
     //If new score is better replace it 
     if (dbData < playerScore) {
         //Save the highscore to database
-        firebase.database().ref('/game/' + uid + '/highscore').set(-playerScore);
+        firebase.database().ref('/game/' + uid + '/highscore').set(-1*(playerScore));
         console.log("Score saved to database");
     };
     //If stored highscore is better replace highscore

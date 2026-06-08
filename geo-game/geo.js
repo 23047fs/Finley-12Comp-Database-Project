@@ -34,7 +34,7 @@ function geoOldScore(snapshot) {
     let dbData = snapshot.val();
     if (dbData < score) {
         //Save the highscore to database
-        firebase.database().ref('/geoGame/' + uid + '/highscore').set(-score);
+        firebase.database().ref('/geoGame/' + uid + '/highscore').set(-1*(score));
         console.log("Score saved to database");
     };
 }
