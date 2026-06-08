@@ -9,7 +9,7 @@
 
 
 //Get uid
-function save() {
+function endFirebase() {
     //Get uid
     let uid = GLOBAL_user["uid"];
     //Check if logged in
@@ -441,7 +441,7 @@ function draw() {
         textSize(20);
 
         //Restart
-        save()
+        endFirebase()
         restartButtonFunction();
 
     } else if (screenPhase == "win") {
@@ -467,7 +467,7 @@ function draw() {
         textSize(20);
 
         //Restart
-        save();
+        endFirebase();
         restartButtonFunction();
     };
 };
