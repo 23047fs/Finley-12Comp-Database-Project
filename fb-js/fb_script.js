@@ -1,5 +1,9 @@
 console.log("Running GameWeb");
+//Html output
+const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
+const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
 
+//Get users data and add to database
 function fb_write() {
     //Get uid
     let uid = GLOBAL_user["uid"];
@@ -35,6 +39,39 @@ function fb_write() {
     );
     console.log("Data has been set");
 }
+//Listener to check is highscore changes
+function geoGameHighscoreListener() {
+    firebase.database().ref('/geoGame').on('value', changeGeoHighscoreTable, fb_error);
+}
+//Change the geo game table
+async function changeGeoHighscoreTable() {
+    await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
+    HTML_OUTPUT_GEO.innerHTML = '<table id="highscoreTable"><tr><th><h2>Name</h2></th><td>' +
+        '<p>'+userArray[1]+'</p>' +
+        '<p>'+userArray[2]+'</p>' +
+        '<p>'+userArray[3]+'</p>' +
+        '<p>'+userArray[4]+'</p>' +
+        '<p>'+userArray[5]+'</p></td></tr><tr><th><h2>Score</h2></th><td>'+
+        '<p>'+userScore[1]+'</p>' +
+        '<p>'+userScore[2]+'</p>' +
+        '<p>'+userScore[3]+'</p>' +
+        '<p>'+userScore[4]+'</p>' +
+        '<p>'+userScore[5]+'</p></td></tr></table>'
+}
+//read it
+function readGeo(snapshot) {
+    console.log(snapshot);
+    snapshot.forEach(show);
+}
+let userArray = [];
+let userScore = [];
+function show(child) {
+    userArray.push(child.key);
+    userScore.push(child.val());
+}
+
+
+
 
 //Characters that shouldn't be used
 const illegalCharaters = /["'`<>]/;

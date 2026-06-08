@@ -17,7 +17,7 @@ function save() {
         return;
     }
     //Check if new score is higher than old one
-    firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore);
+    firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
 }
 
 //Read old score
@@ -26,7 +26,7 @@ function gameOldScore(snapshot) {
     //If new score is better replace it 
     if (dbData < playerScore) {
         //Save the highscore to database
-        firebase.database().ref('/game/' + uid + '/highscore').set(playerScore);
+        firebase.database().ref('/game/' + uid + '/highscore').set(-playerScore);
         console.log("Score saved to database");
     };
     //If stored highscore is better replace highscore

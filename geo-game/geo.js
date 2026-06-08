@@ -24,7 +24,7 @@ function endGame(_player, _obstacle) {
         return;
     }
     //Check if new score is higher than old one
-    firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore);
+    firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
 }
 
 //Read old score
@@ -33,7 +33,7 @@ function geoOldScore(snapshot) {
     dbData = snapshot.val();
     if (dbData < score) {
         //Save the highscore to database
-        firebase.database().ref('/geoGame/' + uid + '/highscore').set(score);
+        firebase.database().ref('/geoGame/' + uid + '/highscore').set(-score);
         console.log("Score saved to database");
     };
 }

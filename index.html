@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body onload="geoGameHighscoreListener()">
   <h1>Welcome</h1>
   <button onclick="fb_login()">Login</button>
   <!--Game links-->
@@ -58,9 +58,9 @@
           <!--Highscore data-->
           <h1>Highscore</h1>
           <h1>Game 1</h1>
-          <div id="databaseOutputGame1"></div>
+          <div id="databaseOutputGeo"></div>
           <h1>Game 2</h1>
-          <div id="databaseOutputGame2"></div>
+          <div id="databaseOutputGame"></div>
           <!--Inside databaseOutput table
         <table id="highscoreTable">
           <tr>
