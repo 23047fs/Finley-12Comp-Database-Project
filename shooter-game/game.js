@@ -19,11 +19,13 @@ function endFirebase() {
     }
     //Check if new score is higher than old one
     firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
-    firebase.database().ref('/users/' + uid + 'userName').once('value', getNameGame, fb_error);
+    firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGame, fb_error);
 }
 
 //Read old score
 function gameOldScore(snapshot) {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
     dbData = snapshot.val();
     //If new score is better replace it 
     if (dbData < playerScore) {
@@ -38,6 +40,9 @@ function gameOldScore(snapshot) {
 }
 
 function getNameGame(snapshot) {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
+    //name
     let name = snapshot.val();
     firebase.database().ref('/game/' + uid + '/userName').set(name)
 }
@@ -421,6 +426,7 @@ function draw() {
         if (screenPhaseSetup == true) {
             //Setup
             setupPhases();
+            endFirebase();
             screenPhaseSetup = false;
         };
 
@@ -441,13 +447,13 @@ function draw() {
         textSize(20);
 
         //Restart
-        endFirebase()
         restartButtonFunction();
 
     } else if (screenPhase == "win") {
         if (screenPhaseSetup == true) {
             //Setup
             setupPhases();
+            endFirebase();
             screenPhaseSetup = false;
         };
 
@@ -467,7 +473,6 @@ function draw() {
         textSize(20);
 
         //Restart
-        endFirebase();
         restartButtonFunction();
     };
 };

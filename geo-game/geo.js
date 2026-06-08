@@ -25,10 +25,12 @@ function endGame(_player, _obstacle) {
     }
     //Check if new score is higher than old one
     firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
-    firebase.database().ref('/users/' + uid + 'userName').once('value', getNameGeo, fb_error);
+    firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGeo, fb_error);
 }
 //Read old score
 function geoOldScore(snapshot) {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
     let dbData = snapshot.val();
     if (dbData < score) {
         //Save the highscore to database
@@ -38,6 +40,8 @@ function geoOldScore(snapshot) {
 }
 //Get userName and add to score path
 function getNameGeo(snapshot) {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
     let name = snapshot.val();
     firebase.database().ref('/geoGame/' + uid + '/userName').set(name)
 }
