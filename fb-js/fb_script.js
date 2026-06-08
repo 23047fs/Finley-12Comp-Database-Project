@@ -34,7 +34,8 @@ function fb_write() {
             email: GLOBAL_user["email"],
             photoURL: GLOBAL_user["photoURL"],
             geoGame: 0,
-            game: 0
+            game: 0,
+            role: 'user'
         }
     );
     console.log("Data has been set");
