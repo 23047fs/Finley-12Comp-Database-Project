@@ -1,11 +1,31 @@
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
+#mainTable, table {
   width: 100%;
+  height: auto;
+  justify-content: left;
+  border: 1px solid black;
 }
 
-td, th {
-  border: 1px solid #dddddd;
+#mainRegistrationTable, table {
+  width: auto;
+  border: 1px solid black;
+}
+
+#mainRegistrationTable, td {
   text-align: left;
   padding: 8px;
+}
+
+#mainRegistrationTable, tr {
+  border-left: 1px solid black;
+}
+
+#mainTableHighscore {
+  width: auto;
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+
+#highscoreTable, table {
+  border: 1px solid black;
 }

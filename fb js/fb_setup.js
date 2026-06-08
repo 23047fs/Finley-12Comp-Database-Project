@@ -1,11 +1,6 @@
 /**************************************************************/
 // fb_initialise()
 // Initialize firebase, connect to the Firebase project.
-// 
-// Find the config data in the Firebase console. Cog wheel > Project Settings > General > Your Apps > SDK setup and configuration > Config
-//
-// Input:  n/a
-// Return: n/a
 /**************************************************************/
 // Your web app's Firebase configuration
 const firebaseConfig = {
