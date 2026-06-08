@@ -10,7 +10,6 @@ console.log("Running the game");
 
 
 // End game code
-let uid = GLOBAL_user["uid"];
 function endGame(_player, _obstacle) {
     console.log("Game ended, you got " + score + " points.")
     screenSelector = "end";
@@ -18,6 +17,7 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
     // Put your database writes here:
     //Get uid
+    let uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");

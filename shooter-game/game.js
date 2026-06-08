@@ -9,8 +9,9 @@
 
 
 //Get uid
-let uid = GLOBAL_user["uid"];
 function save() {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");
