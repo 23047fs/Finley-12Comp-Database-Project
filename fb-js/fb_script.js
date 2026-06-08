@@ -39,37 +39,80 @@ function fb_write() {
     );
     console.log("Data has been set");
 }
+
+//Geo game highscores
+
 //Listener to check is highscore changes
 function geoGameHighscoreListener() {
     firebase.database().ref('/geoGame').on('value', changeGeoHighscoreTable, fb_error);
 }
+//Arrays for top
+let userArrayGeo = [];
+let userScoreGeo = [];
 //Change the geo game table
 async function changeGeoHighscoreTable() {
+    userArrayGeo = [];
+    userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
     HTML_OUTPUT_GEO.innerHTML = '<table id="highscoreTable"><tr><th><h2>Name</h2></th><td>' +
-        '<p>'+userArray[1]+'</p>' +
-        '<p>'+userArray[2]+'</p>' +
-        '<p>'+userArray[3]+'</p>' +
-        '<p>'+userArray[4]+'</p>' +
-        '<p>'+userArray[5]+'</p></td></tr><tr><th><h2>Score</h2></th><td>'+
-        '<p>'+userScore[1]+'</p>' +
-        '<p>'+userScore[2]+'</p>' +
-        '<p>'+userScore[3]+'</p>' +
-        '<p>'+userScore[4]+'</p>' +
-        '<p>'+userScore[5]+'</p></td></tr></table>'
+    '<p>' + userArrayGeo[0] + '</p>' +
+    '<p>' + userArrayGeo[1] + '</p>' +
+    '<p>' + userArrayGeo[2] + '</p>' +
+    '<p>' + userArrayGeo[3] + '</p>' +
+    '<p>' + userArrayGeo[4] + '</p></td></tr><tr><th><h2>Score</h2></th><td>' +
+    '<p>' + userScoreGeo[0] + '</p>' +
+    '<p>' + userScoreGeo[1] + '</p>' +
+    '<p>' + userScoreGeo[2] + '</p>' +
+    '<p>' + userScoreGeo[3] + '</p>' +
+    '<p>' + userScoreGeo[4] + '</p></td></tr></table>';;
 }
 //read it
 function readGeo(snapshot) {
-    console.log(snapshot);
-    snapshot.forEach(show);
+    console.log(snapshot.val());
+    snapshot.forEach(showGeo);
 }
-let userArray = [];
-let userScore = [];
-function show(child) {
-    userArray.push(child.key);
-    userScore.push(child.val());
+//add
+function showGeo(child) {
+    userArrayGeo.push(child.val()["userName"]);
+    userScoreGeo.push(Math.abs(child.val()["highscore"]));
 }
 
+//Game highcore
+
+//Listener to check is highscore changes
+function gameHighscoreListener() {
+    firebase.database().ref('/game').on('value', changeGameHighscoreTable, fb_error);
+}
+//Arrays for top
+let userArrayGame = [];
+let userScoreGame = [];
+//Change the geo game table
+async function changeGameHighscoreTable() {
+    userArrayGame = [];
+    userScoreGame = [];
+    await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
+    HTML_OUTPUT_GAME.innerHTML = '<table id="highscoreTable"><tr><th><h2>Name</h2></th><td>' +
+    '<p>' + userArrayGame[0] + '</p>' +
+    '<p>' + userArrayGame[1] + '</p>' +
+    '<p>' + userArrayGame[2] + '</p>' +
+    '<p>' + userArrayGame[3] + '</p>' +
+    '<p>' + userArrayGame[4] + '</p></td></tr><tr><th><h2>Score</h2></th><td>' +
+    '<p>' + userScoreGame[0] + '</p>' +
+    '<p>' + userScoreGame[1] + '</p>' +
+    '<p>' + userScoreGame[2] + '</p>' +
+    '<p>' + userScoreGame[3] + '</p>' +
+    '<p>' + userScoreGame[4] + '</p></td></tr></table>';;
+}
+//read it
+function readGame(snapshot) {
+    console.log(snapshot.val());
+    snapshot.forEach(showGame);
+}
+//add
+function showGame(child) {
+    userArrayGame.push(child.val()["userName"]);
+    userScoreGame.push(Math.abs(child.val()["highscore"]));
+}
 
 
 

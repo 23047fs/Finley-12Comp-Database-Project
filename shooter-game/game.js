@@ -9,8 +9,8 @@
 
 
 //Get uid
+let uid = GLOBAL_user["uid"];
 function save() {
-    let uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");
@@ -18,6 +18,7 @@ function save() {
     }
     //Check if new score is higher than old one
     firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
+    firebase.database().ref('/users/' + uid + 'userName').once('value', getNameGame, fb_error);
 }
 
 //Read old score
@@ -35,7 +36,10 @@ function gameOldScore(snapshot) {
     }
 }
 
-
+function getNameGame(snapshot) {
+    let name = snapshot.val();
+    firebase.database().ref('/game/' + uid + '/userName').set(name)
+}
 
 /*******************************************************/
 // setup()

@@ -15,14 +15,14 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
   <!-- Include all your firebase libraries and scripts here -->
-  <script src="/fb-js/fb_setup.js"></script>
-  <script src="/fb-js/fb_io.js"></script>
+  <script src="fb-js/fb_setup.js"></script>
+  <script src="fb-js/fb_io.js"></script>
   <!-- firebase end ******************************************-->
 
 
 </head>
 
-<body onload="geoGameHighscoreListener()">
+<body onload="geoGameHighscoreListener(); gameHighscoreListener();">
   <h1>Welcome</h1>
   <button onclick="fb_login()">Login</button>
   <!--Game links-->
