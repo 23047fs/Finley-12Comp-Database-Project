@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body onload="geoGameHighscoreListener(); gameHighscoreListener();">
   <h1>Welcome</h1>
   <button onclick="fb_login()">Login</button>
   <!--Game links-->
@@ -44,8 +44,11 @@
     <div id="registrationTitle">
       <h1>Registration</h1>
     </div>
-
-    <div id="databaseOutputSubmitGeo"></div>
+    
+    <div id="geo">
+      <h1>Geo</h1>
+      <div id="databaseOutputGeo"></div>
+    </div>
 
     <div id="registrationForm">
       <!--User log in-->
@@ -62,8 +65,10 @@
       <button onclick="fb_write()">Submit</button>
     </div>
 
-    <div id="databaseOutputSubmitGame"></div>
-  
+    <div id="game">
+      <h1>Game</h1>
+      <div id="databaseOutputGame"></div>
+    </div>
   </div>
 
 
