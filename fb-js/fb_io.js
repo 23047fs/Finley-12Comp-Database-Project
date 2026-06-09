@@ -5,8 +5,9 @@
 /**************************************************************/
 let GLOBAL_user;
 //Create listener
-function fb_login() {
-    authenticationListener = firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
+async function fb_login() {
+    authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
+    addGames();
 }
 //Checks if user is logged in, if not use fb_popupLogin
 function fb_handleLogin(_user) {
@@ -43,6 +44,13 @@ function fb_logout() {
         firebase.auth().signOut();
         console.log("Logged out")
     };
+}
+const HTML_OUTPUT_SUBMIT_GEO = document.getElementById("databaseOutputSubmitGeo");
+const HTML_OUTPUT_SUBMIT_GAME = document.getElementById("databaseOutputSubmitGame");
+//Adds the games highscores to HTML
+function addGames() {
+    HTML_OUTPUT_SUBMIT_GEO.innerHTML = '<div id="geo"><h1>Geo</h1><div id="databaseOutputGeo"></div></div>';
+    HTML_OUTPUT_SUBMIT_GAME.innerHTML = '<div id="game"><h1>Game</h1><div id="databaseOutputGame"></div></div>';
 }
 
 /**************************************************************/
