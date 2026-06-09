@@ -28,7 +28,7 @@ function gameOldScore(snapshot) {
     let uid = GLOBAL_user["uid"];
     dbData = snapshot.val();
     //If new score is better replace it 
-    if (dbData < playerScore) {
+    if ((Number(dbData)*-1) < score) {
         //Save the highscore to database
         firebase.database().ref('/game/' + uid + '/highscore').set(-1*(playerScore));
         console.log("Score saved to database");

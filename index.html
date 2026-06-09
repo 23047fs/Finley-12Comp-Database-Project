@@ -30,60 +30,52 @@
   <a href="shooter-game/game.html">Shooter Game</a>
   <br>
   <br>
-  <table id="mainTable">
-    <tr>
-      <td>
-        <table id="mainRegistrationTable">
-          <tr>
-            <td>
-              <h1>Registration</h1>
-              <!--User log in-->
-              <form id="userForm">
-                <!--User name-->
-                <label for="userName">Your User Name:</label>
-                <input type="text" id="userName" name="userName" required />
-                <br>
-                <!--User log in-->
-                <label for="userAge">Your Age:</label>
-                <input type="numebr" min="1" max="125" id="userAge" name="userAge" required />
-              </form>
-              <!--Submit button-->
-              <button onclick="fb_write()">Submit</button>
-            </td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <div id="mainTableHighscore">
-          <!--Highscore data-->
-          <h1>Highscore</h1>
-          <h1>Game 1</h1>
-          <div id="databaseOutputGeo"></div>
-          <h1>Game 2</h1>
-          <div id="databaseOutputGame"></div>
-          <!--Inside databaseOutput table
-        <table id="highscoreTable">
-          <tr>
-            <th>
-              <h2>Name</h2>
-            </th>
-            <td>
-              <p>DisplayName</p>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <h2>Score</h2>
-            </th>
-            <td>
-              <p>userHighscore</p>
-            </td>
-          </tr>
-        </table>-->
-        </div>
-      </td>
-    </tr>
-  </table>
+
+  <div id="container">
+
+    <div id="title">
+      <h1>Project</h1>
+    </div>
+
+    <div id="highscoreTitle">
+      <h1>Highscore</h1>
+    </div>
+
+    <div id="registrationTitle">
+      <h1>Registration</h1>
+    </div>
+
+    <div id="geo">
+      <h1>Geo</h1>
+      <div id="databaseOutputGeo"></div>
+    </div>
+
+    <div id="registrationForm">
+      <!--User log in-->
+      <form id="userForm">
+        <!--User name-->
+        <label for="userName">Your User Name:</label>
+        <input type="text" id="userName" name="userName" required />
+        <br>
+        <!--User log in-->
+        <label for="userAge">Your Age:</label>
+        <input type="numebr" min="1" max="125" id="userAge" name="userAge" required />
+      </form>
+      <!--Submit button-->
+      <button onclick="fb_write()">Submit</button>
+    </div>
+
+    <div id="game">
+      <h1>Game</h1>
+      <div id="databaseOutputGame"></div>
+    </div>
+  </div>
+
+
+
+
+
+
 
   <script src="fb-js/fb_script.js"></script>
 </body>

@@ -28,13 +28,11 @@ function fb_write() {
     //Set data
     firebase.database().ref('/users/' + uid).set(
         {
-            userName: userName,
-            userAge: userAge,
+            userName: String(userName),
+            userAge: Number(userAge),
             displayName: GLOBAL_user["displayName"],
             email: GLOBAL_user["email"],
             photoURL: GLOBAL_user["photoURL"],
-            geoGame: 0,
-            game: 0,
             role: 'user'
         }
     );
