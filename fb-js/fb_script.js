@@ -41,9 +41,9 @@ async function fb_write() {
     document.getElementById("game").style.visibility  = "visible";
     console.log("Games are visible");
 }
-
+/***********************************************/
 //Geo game highscores
-
+/***********************************************/
 //Listener to check is highscore changes
 function geoGameHighscoreListener() {
     firebase.database().ref('/geoGame').on('value', changeGeoHighscoreTable, fb_error);
@@ -74,8 +74,9 @@ function showGeo(child) {
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
 }
 
-//Game highcore
-
+/***********************************************/
+//Game highscores
+/***********************************************/
 //Listener to check is highscore changes
 function gameHighscoreListener() {
     firebase.database().ref('/game').on('value', changeGameHighscoreTable, fb_error);
