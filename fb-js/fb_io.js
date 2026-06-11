@@ -7,6 +7,8 @@ let GLOBAL_user;
 //Create listener
 async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
+    document.getElementById("container").style.visibility  = "visible";
+    console.log("Registration is visible");
 }
 //Checks if user is logged in, if not use fb_popupLogin
 function fb_handleLogin(_user) {

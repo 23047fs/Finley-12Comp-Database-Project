@@ -4,7 +4,7 @@ const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
 const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
 
 //Get users data and add to database
-function fb_write() {
+async function fb_write() {
     //Get uid
     let uid = GLOBAL_user["uid"];
     //Check if logged in
@@ -26,7 +26,7 @@ function fb_write() {
         return;
     }
     //Set data
-    firebase.database().ref('/users/' + uid).set(
+    await firebase.database().ref('/users/' + uid).set(
         {
             userName: String(userName),
             userAge: Number(userAge),
@@ -37,6 +37,9 @@ function fb_write() {
         }
     );
     console.log("Data has been set");
+    document.getElementById("geo").style.visibility  = "visible";
+    document.getElementById("game").style.visibility  = "visible";
+    console.log("Games are visible");
 }
 
 //Geo game highscores

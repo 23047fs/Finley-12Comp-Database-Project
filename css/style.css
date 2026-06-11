@@ -38,6 +38,7 @@
   width: 100%;
   overflow: auto;
   border: 1px solid black;
+  visibility: hidden;
 }
 
 #container div {
@@ -86,10 +87,22 @@
   width: 69%;
   height: 40%;
   border: 1px solid black;
+  visibility: hidden;
 }
 
 #game {
   width: 69%;
   height: 40%;
   border: 1px solid black;
+  visibility: hidden;
+}
+
+#geoLink {
+  text-decoration-line: none;
+  color: black;
+}
+
+#gameLink {
+  text-decoration-line: none;
+  color: black;
 }
