@@ -1,24 +1,3 @@
-#mainTable, table {
-  width: 100%;
-  height: auto;
-  justify-content: left;
-  border: 1px solid black;
-}
-
-#mainRegistrationTable, table {
-  width: auto;
-  border: 1px solid black;
-}
-
-#mainRegistrationTable, td {
-  text-align: left;
-  padding: 8px;
-}
-
-#mainRegistrationTable, tr {
-  border-left: 1px solid black;
-}
-
 #mainTableHighscore {
   width: auto;
   padding: 8px;
@@ -26,18 +5,11 @@
   border: 1px solid black;
 }
 
-#highscoreTable, table {
-  border: 1px solid black;
-}
-
-
-
-
-
 #container{
   width: 100%;
   overflow: auto;
   border: 1px solid black;
+  visibility: hidden;
 }
 
 #container div {
@@ -86,10 +58,22 @@
   width: 69%;
   height: 40%;
   border: 1px solid black;
+  visibility: hidden;
 }
 
 #game {
   width: 69%;
   height: 40%;
   border: 1px solid black;
+  visibility: hidden;
+}
+
+#geoLink {
+  text-decoration-line: none;
+  color: black;
+}
+
+#gameLink {
+  text-decoration-line: none;
+  color: black;
 }
