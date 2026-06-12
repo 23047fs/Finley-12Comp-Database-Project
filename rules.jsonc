@@ -1,0 +1,34 @@
+{
+    //Real rules
+    "rules": {
+        ".write": "root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        "game": {
+            "$uid": {
+                ".read": true,
+                ".write": "(auth != null && auth.uid === $uid)"
+            }
+        },
+        "geoGame": {
+            "$uid": {
+                ".read": true,
+                ".write": "(auth != null && auth.uid === $uid)"
+            }
+        },
+        "users": {
+            "$uid": {
+                ".read": "(auth != null && auth.uid === $uid)",
+                ".write": "(auth != null && auth.uid === $uid)"
+                //Allows school account and any account with admin role added
+            }
+        }
+    }
+}
+//Testing
+/*
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+  */
