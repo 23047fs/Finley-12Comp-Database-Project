@@ -11,7 +11,7 @@
 //Get uid
 function endFirebase() {
     //Get uid
-    let uid = GLOBAL_user["uid"];
+    const uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");
@@ -25,8 +25,8 @@ function endFirebase() {
 //Read old score
 function gameOldScore(snapshot) {
     //Get uid
-    let uid = GLOBAL_user["uid"];
-    dbData = snapshot.val();
+    const uid = GLOBAL_user["uid"];
+    const dbData = snapshot.val();
     //If new score is better replace it 
     if ((Number(dbData)*-1) < playerScore) {
         //Save the highscore to database

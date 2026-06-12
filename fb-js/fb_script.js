@@ -1,12 +1,18 @@
 console.log("Running GameWeb");
+
+/***********************************************/
+//Html Information
+/***********************************************/
+
 //Html output
 const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
 const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
+const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
 
 //Get users data and add to database
 async function fb_write() {
     //Get uid
-    let uid = GLOBAL_user["uid"];
+    const uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");
@@ -36,33 +42,57 @@ async function fb_write() {
             role: 'user'
         }
     );
+    //Reset the html
+    userName = "";
+    userAge = "";
     console.log("Data has been set");
-    document.getElementById("geo").style.visibility  = "visible";
-    document.getElementById("game").style.visibility  = "visible";
-    console.log("Games are visible");
 }
+//Checks if user has info in firebase already
+function fb_check() {
+    const uid = GLOBAL_user["uid"];
+    firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
+}
+
+function fb_userNameCheck(snapshot) {
+    const dbData = snapshot.val();
+    if (!dbData) {
+        return;
+    } else {
+        //Make the games visible
+        document.getElementById("geo").style.visibility = "visible";
+        document.getElementById("game").style.visibility = "visible";
+        console.log("Games are visible");
+        HTML_OUTPUT_CHECK.innerHTML = '<h2 style="text-align: center;">You have previously registered</h2>'
+    }
+}
+
+
+
+
+
+
 /***********************************************/
 //Geo game highscores
 /***********************************************/
 //Listener to check is highscore changes
-function geoGameHighscoreListener() {
-    firebase.database().ref('/geoGame').on('value', changeGeoHighscoreTable, fb_error);
+function fb_geoGameHighscoreListener() {
+    firebase.database().ref('/geoGame').on('value', fb_changeGeoHighscoreTable, fb_error);
 }
 //Arrays for top
 let userArrayGeo = [];
 let userScoreGeo = [];
 //Change the geo game table
-async function changeGeoHighscoreTable() {
+async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
-    HTML_OUTPUT_GEO.innerHTML = '<table><tr><th>Name</th><th>Score</th></tr>'+
-    '<tr><td>'+userArrayGeo[0]+'</td><td>'+userScoreGeo[0]+'</td></tr>' +
-    '<tr><td>'+userArrayGeo[1]+'</td><td>'+userScoreGeo[1]+'</td></tr>' +
-    '<tr><td>'+userArrayGeo[2]+'</td><td>'+userScoreGeo[2]+'</td></tr>' +
-    '<tr><td>'+userArrayGeo[3]+'</td><td>'+userScoreGeo[3]+'</td></tr>' +
-    '<tr><td>'+userArrayGeo[4]+'</td><td>'+userScoreGeo[4]+'</td></tr>' +
-    '</table>';
+    HTML_OUTPUT_GEO.innerHTML = '<table><tr><th>Name</th><th>Score</th></tr>' +
+        '<tr><td>' + userArrayGeo[0] + '</td><td>' + userScoreGeo[0] + '</td></tr>' +
+        '<tr><td>' + userArrayGeo[1] + '</td><td>' + userScoreGeo[1] + '</td></tr>' +
+        '<tr><td>' + userArrayGeo[2] + '</td><td>' + userScoreGeo[2] + '</td></tr>' +
+        '<tr><td>' + userArrayGeo[3] + '</td><td>' + userScoreGeo[3] + '</td></tr>' +
+        '<tr><td>' + userArrayGeo[4] + '</td><td>' + userScoreGeo[4] + '</td></tr>' +
+        '</table>';
 }
 //read it
 function readGeo(snapshot) {
@@ -78,24 +108,24 @@ function showGeo(child) {
 //Game highscores
 /***********************************************/
 //Listener to check is highscore changes
-function gameHighscoreListener() {
-    firebase.database().ref('/game').on('value', changeGameHighscoreTable, fb_error);
+function fb_gameHighscoreListener() {
+    firebase.database().ref('/game').on('value', fb_changeGameHighscoreTable, fb_error);
 }
 //Arrays for top
 let userArrayGame = [];
 let userScoreGame = [];
 //Change the geo game table
-async function changeGameHighscoreTable() {
+async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
-    HTML_OUTPUT_GAME.innerHTML = '<table><tr><th>Name</th><th>Score</th></tr>'+
-    '<tr><td>'+userArrayGame[0]+'</td><td>'+userScoreGame[0]+'</td></tr>' +
-    '<tr><td>'+userArrayGame[1]+'</td><td>'+userScoreGame[1]+'</td></tr>' +
-    '<tr><td>'+userArrayGame[2]+'</td><td>'+userScoreGame[2]+'</td></tr>' +
-    '<tr><td>'+userArrayGame[3]+'</td><td>'+userScoreGame[3]+'</td></tr>' +
-    '<tr><td>'+userArrayGame[4]+'</td><td>'+userScoreGame[4]+'</td></tr>' +
-    '</table>';
+    HTML_OUTPUT_GAME.innerHTML = '<table><tr><th>Name</th><th>Score</th></tr>' +
+        '<tr><td>' + userArrayGame[0] + '</td><td>' + userScoreGame[0] + '</td></tr>' +
+        '<tr><td>' + userArrayGame[1] + '</td><td>' + userScoreGame[1] + '</td></tr>' +
+        '<tr><td>' + userArrayGame[2] + '</td><td>' + userScoreGame[2] + '</td></tr>' +
+        '<tr><td>' + userArrayGame[3] + '</td><td>' + userScoreGame[3] + '</td></tr>' +
+        '<tr><td>' + userArrayGame[4] + '</td><td>' + userScoreGame[4] + '</td></tr>' +
+        '</table>';
 }
 //read it
 function readGame(snapshot) {

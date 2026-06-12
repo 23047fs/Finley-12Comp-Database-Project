@@ -9,6 +9,9 @@ async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
     document.getElementById("container").style.visibility  = "visible";
     console.log("Registration is visible");
+    //Checks if user has info stored
+    await fb_check();
+    console.log("Checked");
 }
 //Checks if user is logged in, if not use fb_popupLogin
 function fb_handleLogin(_user) {
@@ -26,7 +29,7 @@ function fb_popupLogin() {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
         GLOBAL_user = result.user;
-        let uid = GLOBAL_user["uid"];
+        const uid = GLOBAL_user["uid"];
         //Create new user in database using uid
         firebase.database().ref('/users/' + uid).set(
             {

@@ -17,9 +17,9 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
     // Put your database writes here:
     //Get uid
-    let uid = GLOBAL_user["uid"];
+    const uid = GLOBAL_user["uid"];
     //Check if logged in
-    if (!GLOBAL_user["uid"]) {
+    if (!uid) {
         alert("Please log in first");
         return;
     };
@@ -30,8 +30,8 @@ function endGame(_player, _obstacle) {
 //Read old score
 function geoOldScore(snapshot) {
     //Get uid
-    let uid = GLOBAL_user["uid"];
-    let dbData = snapshot.val();
+    const uid = GLOBAL_user["uid"];
+    const dbData = snapshot.val();
     if ((Number(dbData)*-1) < score) {
         //Save the highscore to database
         firebase.database().ref('/geoGame/' + uid + '/highscore').set(-1*(score));
@@ -41,8 +41,8 @@ function geoOldScore(snapshot) {
 //Get userName and add to score path
 function getNameGeo(snapshot) {
     //Get uid
-    let uid = GLOBAL_user["uid"];
-    let name = snapshot.val();
+    const uid = GLOBAL_user["uid"];
+    const name = snapshot.val();
     firebase.database().ref('/geoGame/' + uid + '/userName').set(name)
 }
 
