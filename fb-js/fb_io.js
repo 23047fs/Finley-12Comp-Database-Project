@@ -10,7 +10,7 @@ async function fb_login() {
     document.getElementById("container").style.visibility  = "visible";
     console.log("Registration is visible");
     //Checks if user has info stored
-    await fb_check();
+    fb_check();
     console.log("Checked");
 }
 //Checks if user is logged in, if not use fb_popupLogin

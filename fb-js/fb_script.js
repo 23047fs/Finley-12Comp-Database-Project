@@ -46,6 +46,11 @@ async function fb_write() {
     userName = "";
     userAge = "";
     console.log("Data has been set");
+    //Make the games visible
+    document.getElementById("geo").style.visibility = "visible";
+    document.getElementById("game").style.visibility = "visible";
+    console.log("Games are visible");
+    HTML_OUTPUT_CHECK.innerHTML = '<h2>You are registered</h2>'
 }
 //Checks if user has info in firebase already
 function fb_check() {
