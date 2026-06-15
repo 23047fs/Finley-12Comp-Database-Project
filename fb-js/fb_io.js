@@ -6,14 +6,17 @@
 let GLOBAL_user;
 //Create listener
 async function fb_login() {
-    authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error)
+    authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error);
+    //Show the registration
     document.getElementById("container").style.visibility = "visible";
     console.log("Registration is visible");
     //Checks if user has info stored
     if (!GLOBAL_user["uid"]) {
+        alert("A major error has happened please try reloading the page");
         return;
     }
     else {
+        //Check if registred already
         fb_check();
         console.log("Checked");
     };
@@ -38,6 +41,9 @@ function fb_popupLogin() {
         //Create new user in database using uid
         firebase.database().ref('/users/' + uid).set(
             {
+                displayName: GLOBAL_user["displayName"],
+                email: GLOBAL_user["email"],
+                photoURL: GLOBAL_user["photoURL"],
                 role: 'user'
             });
         console.log("New user created");

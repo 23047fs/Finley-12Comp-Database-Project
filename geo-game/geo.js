@@ -38,12 +38,14 @@ function geoOldScore(snapshot) {
         console.log("Score saved to database");
     };
 }
-//Get userName and add to score path
+//Get userName and uid and add to score path
 function getNameGeo(snapshot) {
     //Get uid
     const uid = GLOBAL_user["uid"];
-    const name = snapshot.val();
-    firebase.database().ref('/geoGame/' + uid + '/userName').set(name)
+    //Get name
+    const name = String(snapshot.val());
+    //Set name
+    firebase.database().ref('/geoGame/' + uid + '/userName').set(name);
 }
 
 const SCREEN_WIDTH = 400;

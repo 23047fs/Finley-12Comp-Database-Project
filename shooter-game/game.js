@@ -34,17 +34,18 @@ function gameOldScore(snapshot) {
         console.log("Score saved to database");
     };
     //If stored highscore is better replace highscore
-    if (dbData > highscore) {
-        highscore = dbData;
+    if ((Number(dbData)*-1) > playerScore) {
+        highscore = (Number(dbData)*-1);
     }
 }
 
 function getNameGame(snapshot) {
     //Get uid
-    let uid = GLOBAL_user["uid"];
-    //name
-    let name = snapshot.val();
-    firebase.database().ref('/game/' + uid + '/userName').set(name)
+    const uid = GLOBAL_user["uid"];
+    //Get name
+    const name = String(snapshot.val());
+    //Set name
+    firebase.database().ref('/game/' + uid + '/userName').set(name);
 }
 
 /*******************************************************/

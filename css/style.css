@@ -32,6 +32,13 @@
   border: 1px solid black;
 }
 
+#registration {
+  width: 30%;
+  text-align: center;
+  height: 60%;
+  border: 1px solid black;
+}
+
 #registrationForm {
   width: 30%;
   text-align: center;
@@ -68,12 +75,12 @@
   visibility: hidden;
 }
 
-#geoLink {
-  text-decoration-line: none;
+.link {
+  text-decoration-line: underline;
   color: black;
 }
 
-#gameLink {
-  text-decoration-line: none;
-  color: black;
+.link:hover {
+  text-decoration-line: underline;
+  color: #6e616e;
 }

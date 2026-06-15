@@ -32,20 +32,12 @@ async function fb_write() {
         return;
     }
     //Set data
-    await firebase.database().ref('/users/' + uid).set(
-        {
-            userName: String(userName),
-            userAge: Number(userAge),
-            displayName: GLOBAL_user["displayName"],
-            email: GLOBAL_user["email"],
-            photoURL: GLOBAL_user["photoURL"],
-            role: 'user'
-        }
-    );
+    await firebase.database().ref('/users/' + uid + '/userName').set(String(userName));
+    await firebase.database().ref('/users/' + uid + '/userAge').set(Number(userAge));
     //Reset the html
-    userName = "";
-    userAge = "";
-    console.log("Data has been set");
+    document.getElementById("userName").value = "";
+    document.getElementById("userAge").value = "";
+    console.log("Data has been reset");
     //Make the games visible
     document.getElementById("geo").style.visibility = "visible";
     document.getElementById("game").style.visibility = "visible";
@@ -78,14 +70,19 @@ function fb_userNameCheck(snapshot) {
 function fb_geoGameHighscoreListener() {
     firebase.database().ref('/geoGame').on('value', fb_changeGeoHighscoreTable, fb_error);
 }
-//Arrays for top
+//Arrays for top 5
+//Name
 let userArrayGeo = [];
+//Score
 let userScoreGeo = [];
 //Change the geo game table
 async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
+    //Set them to say "" if no information
+
+
     HTML_OUTPUT_GEO.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>' +
         '<tr><td>1: ' + userArrayGeo[0] + '</td><td>1: ' + userScoreGeo[0] + '</td></tr>' +
         '<tr><td>2: ' + userArrayGeo[1] + '</td><td>2: ' + userScoreGeo[1] + '</td></tr>' +
