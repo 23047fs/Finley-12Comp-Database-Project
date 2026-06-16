@@ -97,7 +97,7 @@ function readGeo(snapshot) {
 }
 //add
 function showGeo(child) {
-    userArrayGeo.push(child.val()["userName"]);
+    userArrayGeo.push(child.val()["uid"]);
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
 }
 

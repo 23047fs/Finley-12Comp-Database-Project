@@ -17,35 +17,26 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
     // Put your database writes here:
     //Get uid
-    const uid = GLOBAL_user["uid"];
+    const UID = GLOBAL_user["uid"];
     //Check if logged in
-    if (!uid) {
+    if (!UID) {
         alert("Please log in first");
         return;
     };
     //Check if new score is higher than old one
-    firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
-    firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGeo, fb_error);
-}
+    firebase.database().ref('/geoGame/' + UID + '/highscore').once('value', geoOldScore, fb_error);
+    //Set uid
+    firebase.database().ref('/geoGame/' + UID + '/uid').set(UID);}
 //Read old score
 function geoOldScore(snapshot) {
     //Get uid
-    const uid = GLOBAL_user["uid"];
+    const UID = GLOBAL_user["uid"];
     const dbData = snapshot.val();
     if ((Number(dbData)*-1) < score) {
         //Save the highscore to database
-        firebase.database().ref('/geoGame/' + uid + '/highscore').set(-1*(score));
+        firebase.database().ref('/geoGame/' + UID + '/highscore').set(-1*(score));
         console.log("Score saved to database");
     };
-}
-//Get userName and uid and add to score path
-function getNameGeo(snapshot) {
-    //Get uid
-    const uid = GLOBAL_user["uid"];
-    //Get name
-    const name = String(snapshot.val());
-    //Set name
-    firebase.database().ref('/geoGame/' + uid + '/userName').set(name);
 }
 
 const SCREEN_WIDTH = 400;
