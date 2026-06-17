@@ -80,11 +80,13 @@ async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
+    //Reset table
+    HTML_OUTPUT_GEO.innerHTML = '';
     //Set the table
-    HTML_OUTPUT_GEO.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
+    HTML_OUTPUT_GEO.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
     for (let i = 0; i < 4; i++) {
         if (!userArrayGeo[i]) {
-            HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>+ (i + 1) +: </td></tr>'
+            HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
 
         } else {
             HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>'
@@ -118,11 +120,13 @@ async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
+    //Reset table
+    HTML_OUTPUT_GAME.innerHTML = '';
     //Set the table
-    HTML_OUTPUT_GAME.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
+    HTML_OUTPUT_GAME.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
     for (let i = 0; i < 4; i++) {
         if (!userArrayGame[i]) {
-            HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>+ (i + 1) +: </td></tr>'
+            HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
         } else {
             HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>'
         };
