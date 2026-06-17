@@ -80,18 +80,15 @@ async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
-    //Reset table
-    HTML_OUTPUT_GEO.innerHTML = '';
-    //Set the table
-    HTML_OUTPUT_GEO.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
-    for (let i = 0; i < 4; i++) {
-        if (!userArrayGeo[i] && !userScoreGeo[i]) {
-            HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
-        } else {
-            HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>'
-        };
-    };
-    HTML_OUTPUT_GEO.innerHTML += '</table>';
+
+
+    HTML_OUTPUT_GEO.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>' +
+        '<tr><td>1: ' + userArrayGeo[0] + '</td><td>1: ' + userScoreGeo[0] + '</td></tr>' +
+        '<tr><td>2: ' + userArrayGeo[1] + '</td><td>2: ' + userScoreGeo[1] + '</td></tr>' +
+        '<tr><td>3: ' + userArrayGeo[2] + '</td><td>3: ' + userScoreGeo[2] + '</td></tr>' +
+        '<tr><td>4: ' + userArrayGeo[3] + '</td><td>4: ' + userScoreGeo[3] + '</td></tr>' +
+        '<tr><td>5: ' + userArrayGeo[4] + '</td><td>5: ' + userScoreGeo[4] + '</td></tr>' +
+        '</table>';
 }
 //read it
 function readGeo(snapshot) {
@@ -119,18 +116,14 @@ async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
-    //Reset table
-    HTML_OUTPUT_GAME.innerHTML = '';
-    //Set the table
-    HTML_OUTPUT_GAME.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
-    for (let i = 0; i < 4; i++) {
-        if (!userArrayGame[i] && !userScoreGame[i]) {
-            HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
-        } else {
-            HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>'
-        };
-    }
-    HTML_OUTPUT_GAME.innerHTML += '</table>';
+    
+    HTML_OUTPUT_GAME.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>' +
+        '<tr><td>1: ' + userArrayGame[0] + '</td><td>1: ' + userScoreGame[0] + '</td></tr>' +
+        '<tr><td>2: ' + userArrayGame[1] + '</td><td>2: ' + userScoreGame[1] + '</td></tr>' +
+        '<tr><td>3: ' + userArrayGame[2] + '</td><td>3: ' + userScoreGame[2] + '</td></tr>' +
+        '<tr><td>4: ' + userArrayGame[3] + '</td><td>4: ' + userScoreGame[3] + '</td></tr>' +
+        '<tr><td>5: ' + userArrayGame[4] + '</td><td>5: ' + userScoreGame[4] + '</td></tr>' +
+        '</table>';
 }
 //read it
 function readGame(snapshot) {
