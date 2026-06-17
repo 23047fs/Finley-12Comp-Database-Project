@@ -12,7 +12,7 @@ const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
 //Get users data and add to database
 async function fb_write() {
     //Get uid
-    const uid = GLOBAL_user["uid"];
+    let uid = GLOBAL_user["uid"];
     //Check if logged in
     if (!uid) {
         alert("Please log in first");
@@ -27,7 +27,7 @@ async function fb_write() {
         return;
     }
     //Check if info contains bad characters
-    if (illegalCharaters.test(userName) == true || illegalCharaters.test(userAge) == true) {
+    if (CHAR.test(userName) == true || CHAR.test(userAge) == true) {
         alert("Please fill in the information");
         return;
     }
@@ -46,12 +46,12 @@ async function fb_write() {
 }
 //Checks if user has info in firebase already
 function fb_check() {
-    const uid = GLOBAL_user["uid"];
+    let uid = GLOBAL_user["uid"];
     firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
 }
 
 function fb_userNameCheck(snapshot) {
-    const dbData = snapshot.val();
+    let dbData = snapshot.val();
     if (!dbData) {
         return;
     } else {
@@ -97,10 +97,11 @@ function readGeo(snapshot) {
 }
 //add
 function showGeo(child) {
-    userArrayGeo.push(child.val()["uid"]);
+    //Get the userName from the uid and add it
+    userArrayGeo.push(child.val()["userName"]);
+    //Set the highscore
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
 }
-
 /***********************************************/
 //Game highscores
 /***********************************************/
@@ -130,11 +131,14 @@ function readGame(snapshot) {
 }
 //add
 function showGame(child) {
+    //Get the userName from the uid and add it
     userArrayGame.push(child.val()["userName"]);
+    //Set the highscore
     userScoreGame.push(Math.abs(child.val()["highscore"]));
 }
 
 
 
+
 //Characters that shouldn't be used
-const illegalCharaters = /["'`<>]/;
+const CHAR = /["'`<>]/;

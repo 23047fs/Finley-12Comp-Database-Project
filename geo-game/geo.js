@@ -8,6 +8,10 @@
 /*******************************************************/
 console.log("Running the game");
 
+/*******************************************************/
+//Firebase + END
+/*******************************************************/
+
 
 // End game code
 function endGame(_player, _obstacle) {
@@ -17,27 +21,43 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
     // Put your database writes here:
     //Get uid
-    const UID = GLOBAL_user["uid"];
+    let uid = GLOBAL_user["uid"];
     //Check if logged in
-    if (!UID) {
+    if (!uid) {
         alert("Please log in first");
         return;
     };
     //Check if new score is higher than old one
-    firebase.database().ref('/geoGame/' + UID + '/highscore').once('value', geoOldScore, fb_error);
-    //Set uid
-    firebase.database().ref('/geoGame/' + UID + '/uid').set(UID);}
+    firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
+    //Set name
+    firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGeo, fb_error);
+}
+
 //Read old score
 function geoOldScore(snapshot) {
     //Get uid
-    const UID = GLOBAL_user["uid"];
-    const dbData = snapshot.val();
+    let uid = GLOBAL_user["uid"];
+    let dbData = snapshot.val();
     if ((Number(dbData)*-1) < score) {
         //Save the highscore to database
-        firebase.database().ref('/geoGame/' + UID + '/highscore').set(-1*(score));
+        firebase.database().ref('/geoGame/' + uid + '/highscore').set(-1*(score));
         console.log("Score saved to database");
     };
 }
+//Get name and set it
+function getNameGeo(snapshot) {
+    //Get uid
+    let uid = GLOBAL_user["uid"];
+    //Get name
+    let name = String(snapshot.val());
+    //Set name
+    firebase.database().ref('/geoGame/' + uid + '/userName').set(name);
+}
+
+
+/*******************************************************/
+//Game code
+/*******************************************************/
 
 const SCREEN_WIDTH = 400;
 const SCREEN_HEIGHT = 200;
