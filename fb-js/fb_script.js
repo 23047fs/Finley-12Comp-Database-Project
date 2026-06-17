@@ -85,9 +85,8 @@ async function fb_changeGeoHighscoreTable() {
     //Set the table
     HTML_OUTPUT_GEO.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
     for (let i = 0; i < 4; i++) {
-        if (!userArrayGeo[i]) {
+        if (!userArrayGeo[i] && !userScoreGeo[i]) {
             HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
-
         } else {
             HTML_OUTPUT_GEO.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>'
         };
@@ -125,7 +124,7 @@ async function fb_changeGameHighscoreTable() {
     //Set the table
     HTML_OUTPUT_GAME.innerHTML += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
     for (let i = 0; i < 4; i++) {
-        if (!userArrayGame[i]) {
+        if (!userArrayGame[i] && !userScoreGame[i]) {
             HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>'+ (i + 1) +': </td></tr>'
         } else {
             HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>'
