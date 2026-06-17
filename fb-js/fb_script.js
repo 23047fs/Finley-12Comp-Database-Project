@@ -120,12 +120,13 @@ async function fb_changeGameHighscoreTable() {
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
     //Set the table
     HTML_OUTPUT_GAME.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>'
-    if (!userArrayGame[i]) {
+    for (let i = 0; i < 4; i++) {
+        if (!userArrayGame[i]) {
             HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': </td><td>+ (i + 1) +: </td></tr>'
-
         } else {
             HTML_OUTPUT_GAME.innerHTML += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>'
         };
+    }
     HTML_OUTPUT_GAME.innerHTML += '</table>';
 }
 //read it
