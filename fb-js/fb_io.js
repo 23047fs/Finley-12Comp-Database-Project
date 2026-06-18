@@ -10,16 +10,9 @@ async function fb_login() {
     //Show the registration
     document.getElementById("container").style.visibility = "visible";
     console.log("Registration is visible");
-    //Checks if user has info stored
-    if (!GLOBAL_user["uid"]) {
-        alert("A major error has happened please try reloading the page");
-        return;
-    }
-    else {
-        //Check if registred already
-        fb_check();
-        console.log("Checked");
-    };
+    //Check if registred already
+    fb_check();
+    console.log("Checked");
 }
 //Checks if user is logged in, if not use fb_popupLogin
 function fb_handleLogin(_user) {

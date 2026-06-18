@@ -28,7 +28,7 @@ async function fb_write() {
     }
     //Check if info contains bad characters
     if (CHAR.test(userName) == true || CHAR.test(userAge) == true) {
-        alert("Please fill in the information");
+        alert("'`<> are not allowed please try a different name");
         return;
     }
     //Set data
@@ -80,15 +80,23 @@ async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
-
-
-    HTML_OUTPUT_GEO.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>' +
-        '<tr><td>1: ' + userArrayGeo[0] + '</td><td>1: ' + userScoreGeo[0] + '</td></tr>' +
-        '<tr><td>2: ' + userArrayGeo[1] + '</td><td>2: ' + userScoreGeo[1] + '</td></tr>' +
-        '<tr><td>3: ' + userArrayGeo[2] + '</td><td>3: ' + userScoreGeo[2] + '</td></tr>' +
-        '<tr><td>4: ' + userArrayGeo[3] + '</td><td>4: ' + userScoreGeo[3] + '</td></tr>' +
-        '<tr><td>5: ' + userArrayGeo[4] + '</td><td>5: ' + userScoreGeo[4] + '</td></tr>' +
-        '</table>';
+    //Table
+    //Make a variable for the table    
+    let geoTable = String("");
+    //Make the table
+    geoTable += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>';
+    //If score is there add it
+    for (let i = 0; i < 4; i++) {
+        if (userArrayGeo[i] != null) {
+            geoTable += '<tr><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+        } else {
+            geoTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+        }
+    }
+    //Finish the table
+    geoTable += '</table>';
+    //Add it to HTML
+    HTML_OUTPUT_GEO.innerHTML = geoTable;
 }
 //read it
 function readGeo(snapshot) {
@@ -116,14 +124,23 @@ async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
-    
-    HTML_OUTPUT_GAME.innerHTML = '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>' +
-        '<tr><td>1: ' + userArrayGame[0] + '</td><td>1: ' + userScoreGame[0] + '</td></tr>' +
-        '<tr><td>2: ' + userArrayGame[1] + '</td><td>2: ' + userScoreGame[1] + '</td></tr>' +
-        '<tr><td>3: ' + userArrayGame[2] + '</td><td>3: ' + userScoreGame[2] + '</td></tr>' +
-        '<tr><td>4: ' + userArrayGame[3] + '</td><td>4: ' + userScoreGame[3] + '</td></tr>' +
-        '<tr><td>5: ' + userArrayGame[4] + '</td><td>5: ' + userScoreGame[4] + '</td></tr>' +
-        '</table>';
+    //Table
+    //Make a variable for the table    
+    let gameTable = String("");
+    //Make the table
+    gameTable += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>';
+    //If score is there add it
+    for (let i = 0; i < 4; i++) {
+        if (userArrayGame[i] != null) {
+            gameTable += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
+        } else {
+            gameTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+        }
+    }
+    //Finish the table
+    gameTable += '</table>';
+    //Add it to HTML
+    HTML_OUTPUT_GAME.innerHTML = gameTable;
 }
 //read it
 function readGame(snapshot) {
