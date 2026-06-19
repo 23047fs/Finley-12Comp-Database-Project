@@ -37,7 +37,8 @@ async function fb_write() {
         email: GLOBAL_user["email"],
         photoURL: GLOBAL_user["photoURL"],
         userName: String(userName),
-        userAge: Number(userAge)
+        userAge: Number(userAge),
+        role: String("user")
     });
 
     //Reset the html
