@@ -62,11 +62,8 @@ function fb_userNameCheck(snapshot) {
     if (!dbData) {
         return;
     } else {
-        //Make the games visible
-        document.getElementById("geo").style.visibility = "visible";
-        document.getElementById("game").style.visibility = "visible";
-        console.log("Games are visible");
-        HTML_OUTPUT_CHECK.innerHTML = '<h2>You have previously registered</h2>'
+        //Make the games link visible
+        HTML_OUTPUT_CHECK.innerHTML = '<h1><a class="link" href="tables.html">Link</a></h1>'
     }
 }
 
