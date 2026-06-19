@@ -7,6 +7,8 @@ let GLOBAL_user;
 //Create listener
 async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error);
+    //Check if have logged in before
+    fb_checkIfPrevious();
     //Show the registration
     document.getElementById("container").style.visibility = "visible";
     //Make the games in table visible
