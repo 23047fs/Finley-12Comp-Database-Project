@@ -12,46 +12,32 @@
   visibility: hidden;
 }
 
-#container div {
-  float: left;
-}
-
 #title {
   text-align: center;
   size: 50px;
-  width: 30%;
-  height: 20%;
   border: 1px solid black;
 }
 
 #registrationTitle {
   text-align: center;
   size: 35px;
-  width: 30%;
-  height: 20%;
   border: 1px solid black;
 }
 
 #registrationForm {
-  width: 30%;
-  text-align: left;
-  height: 60%;
+  text-align: center;
   border: 1px solid black;
 }
 
 #highscoreTitle {
   text-align: center;
   size: 35px;
-  width: 69%;
-  height: 20%;
   border: 1px solid black;
 }
 
 #geo {
   justify-content: center;
   align-items: center;
-  width: 69%;
-  height: 40%;
   border: 1px solid black;
   visibility: hidden;
 }
@@ -59,8 +45,6 @@
 #game {
   justify-content: center;
   align-items: center;
-  width: 69%;
-  height: 40%;
   border: 1px solid black;
   visibility: hidden;
 }

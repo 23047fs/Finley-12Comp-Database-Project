@@ -9,10 +9,10 @@ async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error);
     //Show the registration
     document.getElementById("container").style.visibility = "visible";
+    //Make the games in table visible
+    document.getElementById("game").style.visibility = "visible";
+    document.getElementById("geo").style.visibility = "visible";
     console.log("Registration is visible");
-    //Check if registred already
-    fb_check();
-    console.log("Checked");
 }
 //Checks if user is logged in, if not use fb_popupLogin
 function fb_handleLogin(_user) {
