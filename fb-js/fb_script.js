@@ -62,6 +62,21 @@ function fb_userNameCheck(snapshot) {
     }
 }
 
+function fb_checkIfPrevious() {
+    let uid = GLOBAL_user["uid"];
+    firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
+}
+
+function fb_userNameCheck(snapshot) {
+    let dbData = snapshot.val();
+    if (!dbData) {
+        return;
+    } else {
+        //Make the games link visible
+        HTML_OUTPUT_CHECK.innerHTML = '<h1><a class="link" href="tables.html">Link</a></h1><br><h1>You Have previously registered</h1>'
+    }
+}
+
 /***********************************************/
 //Geo game highscores
 /***********************************************/
