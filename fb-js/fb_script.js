@@ -32,8 +32,14 @@ async function fb_write() {
         return;
     }
     //Set data
-    await firebase.database().ref('/users/' + uid + '/userName').set(String(userName));
-    await firebase.database().ref('/users/' + uid + '/userAge').set(Number(userAge));
+    await firebase.database().ref('/users/' + uid).set({
+        displayName: GLOBAL_user["displayName"],
+        email: GLOBAL_user["email"],
+        photoURL: GLOBAL_user["photoURL"],
+        userName: String(userName),
+        userAge: Number(userAge)
+    });
+
     //Reset the html
     document.getElementById("userName").value = "";
     document.getElementById("userAge").value = "";
