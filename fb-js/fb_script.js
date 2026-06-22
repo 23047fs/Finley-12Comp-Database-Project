@@ -40,28 +40,16 @@ async function fb_write() {
         userAge: Number(userAge),
         role: String("user")
     });
-
     //Reset the html
     document.getElementById("userName").value = "";
     document.getElementById("userAge").value = "";
     console.log("Data has been reset");
+
+    //Insert next link
+    HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a></h1><h1>You are now registered</h1></div>';
 }
+
 //Checks if user has info in firebase already
-function fb_check() {
-    let uid = GLOBAL_user["uid"];
-    firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
-}
-
-function fb_userNameCheck(snapshot) {
-    let dbData = snapshot.val();
-    if (!dbData) {
-        return;
-    } else {
-        //Make the games link visible
-        HTML_OUTPUT_CHECK.innerHTML = '<h1><a class="link" href="tables.html">Link</a></h1>'
-    }
-}
-
 function fb_checkIfPrevious() {
     let uid = GLOBAL_user["uid"];
     firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
@@ -70,11 +58,21 @@ function fb_checkIfPrevious() {
 function fb_userNameCheck(snapshot) {
     let dbData = snapshot.val();
     if (!dbData) {
-        return;
+        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
     } else {
         //Make the games link visible
-        HTML_OUTPUT_CHECK.innerHTML = '<h1><a class="link" href="tables.html">Link</a></h1><br><h1>You Have previously registered</h1>'
+        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a></h1><h1>You have previously registered</h1></div>';
     }
+}
+
+function skipLogin() {
+    //Show the container
+    document.getElementById("container").style.visibility = "visible";
+    console.log("Registration is visible");
+    //Make the games in table visible
+    document.getElementById("game").style.visibility = "visible";
+    document.getElementById("geo").style.visibility = "visible";
+    console.log("Games are visible");
 }
 
 /***********************************************/

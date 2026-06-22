@@ -21,12 +21,12 @@
 #registrationTitle {
   text-align: center;
   size: 35px;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #registrationForm {
   text-align: center;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #highscoreTitle {
@@ -36,6 +36,7 @@
 }
 
 #geo {
+  text-align: center;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
@@ -43,10 +44,17 @@
 }
 
 #game {
+  text-align: center;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
   visibility: hidden;
+}
+
+.tableLink {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .link {

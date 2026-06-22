@@ -20,7 +20,7 @@
   <!-- firebase end ******************************************-->
 </head>
 
-<body>
+<body onload="pageIndex()">
   <div id="title">
     <h1>Welcome</h1>
   </div>
@@ -32,7 +32,7 @@
     <div id="registrationTitle">
       <h1>Registration</h1>
     </div>
-    <div id="registrationForm">
+    <div id="registrationForm"><br>
       <!--User log in-->
       <form id="userForm">
         <!--User name-->
@@ -44,10 +44,16 @@
         <input type="number" min="10" max="125" id="userAge" name="userAge" required />
       </form>
       <!--Submit button-->
-      <button onclick="fb_write(); fb_check();">Submit</button>
+      <button onclick="fb_write()">Submit</button><br>
     </div>
     <br>
     <div id="databaseOutputCheck"></div>
+
+
+
+    <!--Weird error fix-->
+    <div id="geo"></div>
+    <div id="game"></div>
 
     <script src="fb-js/fb_script.js"></script>
 </body>
