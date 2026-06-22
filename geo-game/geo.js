@@ -31,6 +31,8 @@ function endGame(_player, _obstacle) {
     firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
     //Set name
     firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGeo, fb_error);
+    //Add photo
+    firebase.database().ref('/geoGame/' + uid + '/photoURL').set(GLOBAL_user["photoURL"]);
 }
 
 //Read old score

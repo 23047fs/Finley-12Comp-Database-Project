@@ -21,6 +21,8 @@ function endFirebase() {
     firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
     //Set name
     firebase.database().ref('/users/' + uid + '/userName').once('value', getNameGame, fb_error);
+    //Add photo
+    firebase.database().ref('/game/' + uid + '/photoURL').set(GLOBAL_user["photoURL"]);
 }
 
 //Read old score

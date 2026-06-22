@@ -91,6 +91,7 @@ let userScoreGeo = [];
 async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
+    userPhotoGeo = [];
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
     //Table
     //Make a variable for the table    
@@ -100,7 +101,7 @@ async function fb_changeGeoHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGeo[i] != null) {
-            geoTable += '<tr><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+            geoTable += '<tr><td>' + GLOBAL_user["photoURL"] + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
             geoTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
@@ -120,6 +121,8 @@ function showGeo(child) {
     userArrayGeo.push(child.val()["userName"]);
     //Set the highscore
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
+    //PhotoURL
+    userPhotoGeo.push(child.val()["photoURL"]);
 }
 /***********************************************/
 //Game highscores
@@ -131,6 +134,7 @@ function fb_gameHighscoreListener() {
 //Arrays for top
 let userArrayGame = [];
 let userScoreGame = [];
+let userPhotoGame = [];
 //Change the geo game table
 async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
@@ -144,7 +148,7 @@ async function fb_changeGameHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGame[i] != null) {
-            gameTable += '<tr><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
+            gameTable += '<tr><td>' + GLOBAL_user["photoURL"] + '</td><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
             gameTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
@@ -164,6 +168,8 @@ function showGame(child) {
     userArrayGame.push(child.val()["userName"]);
     //Set the highscore
     userScoreGame.push(Math.abs(child.val()["highscore"]));
+    //PhotoURL
+    userPhotoGame.push(child.val()["photoURL"]);
 }
 
 
