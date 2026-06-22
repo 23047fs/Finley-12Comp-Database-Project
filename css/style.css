@@ -5,7 +5,7 @@
   border: 1px solid black;
 }
 
-#container{
+#container {
   width: 100%;
   overflow: auto;
   border: 1px solid black;
@@ -49,6 +49,12 @@
   align-items: center;
   border: 1px solid black;
   visibility: hidden;
+}
+
+.table {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .tableLink {
