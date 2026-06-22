@@ -2,7 +2,7 @@
     //Real rules
     "rules": {
         ".write": "root.child('users').child(auth.uid).child('role').val() === 'admin' || auth.uid === 'lnaUwkd493YAAuYOCtv2U0RYQIB2'",
-        //Allows my account and any account with admin role to write
+        //Allows my account (school) and any account with admin role to write
         "game": {
             ".read": true,
             "$uid": {
