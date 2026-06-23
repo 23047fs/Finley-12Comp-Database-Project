@@ -94,7 +94,7 @@ async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
     userScoreGeo = [];
     userPhotoGeo = [];
-    await firebase.database().ref('/geoGame').orderByChild("highscore").limitToLast(5).once('value', readGeo, fb_error);
+    await firebase.database().ref('/geoGame').orderByChild("highscore").limitToFirst(5).once('value', readGeo, fb_error);
     //Table
     //Make a variable for the table    
     let geoTable = String("");
@@ -147,7 +147,7 @@ async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
     userPhotoGame = [];
-    await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
+    await firebase.database().ref('/game').orderByChild("highscore").limitToFirst(5).once('value', readGame, fb_error);
     //Table
     //Make a variable for the table    
     let gameTable = String("");
