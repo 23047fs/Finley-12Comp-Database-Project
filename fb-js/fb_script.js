@@ -125,7 +125,7 @@ function showGeo(child) {
     if (child.val()["photoURL"] != null) {
         userPhotoGeo.push(child.val()["photoURL"]);
     } else {
-        userPhotoGeo.push(String("Empty"));
+        userPhotoGeo.push(String("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"));
     };
 }
 /***********************************************/
@@ -177,7 +177,7 @@ function showGame(child) {
     if (child.val()["photoURL"] != null) {
         userPhotoGame.push(child.val()["photoURL"]);
     } else {
-        userPhotoGame.push(String("Empty"));
+        userPhotoGame.push(String("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"));
     };
 }
 
