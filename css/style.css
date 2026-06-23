@@ -31,8 +31,8 @@ button:hover {
 }
 
 .img {
-  border-radius: 50%;
-  width: 12%;
+  border-radius: 80%;
+  width: auto;
 }
 
 #mainTableHighscore {

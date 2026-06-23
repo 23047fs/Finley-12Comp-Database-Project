@@ -101,7 +101,7 @@ async function fb_changeGeoHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGeo[i] != null) {
-            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
             geoTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
@@ -124,6 +124,8 @@ function showGeo(child) {
     //PhotoURL
     if (child.val()["photoURL"] != null) {
         userPhotoGeo.push(child.val()["photoURL"]);
+    } else {
+        userPhotoGeo.push("Empty");
     };
 }
 /***********************************************/
@@ -174,6 +176,8 @@ function showGame(child) {
     //PhotoURL
     if (child.val()["photoURL"] != null) {
         userPhotoGame.push(child.val()["photoURL"]);
+    } else {
+        userPhotoGame.push("Empty");
     };
 }
 
