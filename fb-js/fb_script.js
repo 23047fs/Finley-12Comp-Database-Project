@@ -111,7 +111,7 @@ async function fb_changeGeoHighscoreTable() {
     //Add it to HTML
     HTML_OUTPUT_GEO.innerHTML = geoTable;
 }
-//read it
+//read it for each
 function readGeo(snapshot) {
     snapshot.forEach(showGeo);
 }
@@ -163,7 +163,7 @@ async function fb_changeGameHighscoreTable() {
     //Add it to HTML
     HTML_OUTPUT_GAME.innerHTML = gameTable;
 }
-//read it
+//read it for each
 function readGame(snapshot) {
     snapshot.forEach(showGame);
 }
