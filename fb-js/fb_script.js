@@ -115,7 +115,6 @@ async function fb_changeGeoHighscoreTable() {
 }
 //read it for each
 function readGeo(snapshot) {
-    console.log(snapshot.val());
     snapshot.forEach(showGeo);
 }
 //add
