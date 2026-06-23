@@ -101,7 +101,7 @@ async function fb_changeGeoHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGeo[i] != null) {
-            geoTable += '<tr><td>' + '<a src="' + GLOBAL_user["photoURL"] + '"</a>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+            geoTable += '<tr><td>' + '<a src="' + userPhotoGame[i] + '"</a>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
             geoTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
@@ -139,6 +139,7 @@ let userPhotoGame = [];
 async function fb_changeGameHighscoreTable() {
     userArrayGame = [];
     userScoreGame = [];
+    userPhotoGame = [];
     await firebase.database().ref('/game').orderByChild("highscore").limitToLast(5).once('value', readGame, fb_error);
     //Table
     //Make a variable for the table    
@@ -148,7 +149,7 @@ async function fb_changeGameHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGame[i] != null) {
-            gameTable += '<tr><td>' + '<a src="' + GLOBAL_user["photoURL"] + '"</a>' + '</td><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
+            gameTable += '<tr><td>' + '<a src="' + userPhotoGame[i] + '"</a>' + '</td><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
             gameTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
