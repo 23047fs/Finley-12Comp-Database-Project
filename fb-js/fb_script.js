@@ -99,7 +99,7 @@ async function fb_changeGeoHighscoreTable() {
     //Make the table
     geoTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
         if (userArrayGeo[i] != null) {
             geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
@@ -125,7 +125,7 @@ function showGeo(child) {
     if (child.val()["photoURL"] != null) {
         userPhotoGeo.push(child.val()["photoURL"]);
     } else {
-        userPhotoGeo.push("Empty");
+        userPhotoGeo.push(String("Empty"));
     };
 }
 /***********************************************/
@@ -151,7 +151,7 @@ async function fb_changeGameHighscoreTable() {
     //Make the table
     gameTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
         if (userArrayGame[i] != null) {
             gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
@@ -177,7 +177,7 @@ function showGame(child) {
     if (child.val()["photoURL"] != null) {
         userPhotoGame.push(child.val()["photoURL"]);
     } else {
-        userPhotoGame.push("Empty");
+        userPhotoGame.push(String("Empty"));
     };
 }
 
