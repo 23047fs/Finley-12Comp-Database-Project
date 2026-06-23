@@ -12,11 +12,6 @@
 function endFirebase() {
     //Get uid
     let uid = GLOBAL_user["uid"];
-    //Check if logged in
-    if (!uid) {
-        alert("Please log in first");
-        return;
-    }
     //Check if new score is higher than old one
     firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
     //Set name

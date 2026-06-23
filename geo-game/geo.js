@@ -22,11 +22,6 @@ function endGame(_player, _obstacle) {
     // Put your database writes here:
     //Get uid
     let uid = GLOBAL_user["uid"];
-    //Check if logged in
-    if (!uid) {
-        alert("Please log in first");
-        return;
-    };
     //Check if new score is higher than old one
     firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
     //Set name
