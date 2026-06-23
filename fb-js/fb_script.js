@@ -103,7 +103,7 @@ async function fb_changeGeoHighscoreTable() {
         if (userArrayGeo[i] != null) {
             geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
-            geoTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            geoTable += '<tr><td>Empty</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
@@ -155,7 +155,7 @@ async function fb_changeGameHighscoreTable() {
         if (userArrayGame[i] != null) {
             gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td>' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
-            gameTable += '<tr><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            gameTable += '<tr><td>Empty</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td>' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
