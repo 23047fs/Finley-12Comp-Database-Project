@@ -87,6 +87,8 @@ function fb_geoGameHighscoreListener() {
 let userArrayGeo = [];
 //Score
 let userScoreGeo = [];
+//Photo
+let userPhotoGeo = [];
 //Change the geo game table
 async function fb_changeGeoHighscoreTable() {
     userArrayGeo = [];
@@ -113,6 +115,7 @@ async function fb_changeGeoHighscoreTable() {
 }
 //read it for each
 function readGeo(snapshot) {
+    console.log(snapshot.val());
     snapshot.forEach(showGeo);
 }
 //add
