@@ -122,7 +122,7 @@ function showGeo(child) {
     //Set the highscore
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
     //PhotoURL
-    if(child.val()["photoURL"] != null) {
+    if (child.val()["photoURL"] != null) {
         userPhotoGeo.push(child.val()["photoURL"]);
     };
 }
@@ -172,9 +172,10 @@ function showGame(child) {
     //Set the highscore
     userScoreGame.push(Math.abs(child.val()["highscore"]));
     //PhotoURL
-    userPhotoGame.push(child.val()["photoURL"]);
+    if (child.val()["photoURL"] != null) {
+        userPhotoGame.push(child.val()["photoURL"]);
+    };
 }
-
 
 
 
