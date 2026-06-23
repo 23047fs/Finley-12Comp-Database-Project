@@ -122,7 +122,9 @@ function showGeo(child) {
     //Set the highscore
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
     //PhotoURL
-    userPhotoGeo.push(child.val()["photoURL"]);
+    if(child.val()["photoURL"] != null) {
+        userPhotoGeo.push(child.val()["photoURL"]);
+    };
 }
 /***********************************************/
 //Game highscores
