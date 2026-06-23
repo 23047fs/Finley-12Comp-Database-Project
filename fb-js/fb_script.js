@@ -97,7 +97,7 @@ async function fb_changeGeoHighscoreTable() {
     //Make a variable for the table    
     let geoTable = String("");
     //Make the table
-    geoTable += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>';
+    geoTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGeo[i] != null) {
@@ -145,7 +145,7 @@ async function fb_changeGameHighscoreTable() {
     //Make a variable for the table    
     let gameTable = String("");
     //Make the table
-    gameTable += '<table id="mainTableHighscore"><tr><th>Name</th><th>Score</th></tr>';
+    gameTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
     for (let i = 0; i < 4; i++) {
         if (userArrayGame[i] != null) {
