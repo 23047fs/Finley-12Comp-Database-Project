@@ -18,9 +18,22 @@
     <script src="fb-js/fb_setup.js"></script>
     <script src="fb-js/fb_io.js"></script>
     <!-- firebase end ******************************************-->
+
+    <style>
+        #container {
+            visibility: visible;
+        }
+        #geo {
+            visibility: visible;
+        }
+        #game {
+            visibility: visible;
+        }
+    </style>
+
 </head>
 
-<body onload="pageTable(); skipLogin(); fb_geoGameHighscoreListener(); fb_gameHighscoreListener();">
+<body onload="fb_geoGameHighscoreListener(); fb_gameHighscoreListener();">
 
     <div id="title">
         <h1>Project</h1>

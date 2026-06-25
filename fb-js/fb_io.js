@@ -4,37 +4,30 @@
 // This function creates a listener to check if users are logged into google; if not creates a popup
 /**************************************************************/
 let GLOBAL_user;
-let page; // 0 = index, 1 = tables
+let indexPage = true;
 //Check what page on
-function pageIndex() {
-    page = 0;
-}
-function pageTable() {
-    page = 1;
-}
+
+
 //Create listener
 async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error);
     //Show the container
     document.getElementById("container").style.visibility = "visible";
     console.log("Registration is visible");
-    //Make the games in table visible
-    document.getElementById("game").style.visibility = "visible";
-    document.getElementById("geo").style.visibility = "visible";
-    console.log("Games are visible");
 }
 //Checks if user is logged in, if not use fb_popupLogin
-async function fb_handleLogin(_user) {
+function fb_handleLogin(_user) {
     if (_user) {
         console.log("User is logged in")
-        GLOBAL_user = await _user; //Save user details into global variable
+        GLOBAL_user = _user; //Save user details into global variable
     } else {
         console.log("User not logged in - starting popup")
-        await fb_popupLogin();
+        fb_popupLogin();
         console.log("User is logged in");
     };
-    if (page === 0) {
+    if (indexPage === true) {
         fb_checkIfPrevious();
+        indexPage = false;
     };
 }
 //Creates a popup and gets user google

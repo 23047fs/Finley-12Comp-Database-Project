@@ -76,7 +76,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-  visibility: hidden;
 }
 
 #game {
@@ -84,7 +83,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-  visibility: hidden;
 }
 
 .tableLink {

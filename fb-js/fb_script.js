@@ -60,19 +60,9 @@ function fb_userNameCheck(snapshot) {
     if (!dbData) {
         HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
     } else {
-        //Make the games link visible
-        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a></h1><h1>You have previously registered</h1></div>';
+        //Skip the wait
+        window.location.href = "tables.html";
     }
-}
-
-function skipLogin() {
-    //Show the container
-    document.getElementById("container").style.visibility = "visible";
-    console.log("Registration is visible");
-    //Make the games in table visible
-    document.getElementById("game").style.visibility = "visible";
-    document.getElementById("geo").style.visibility = "visible";
-    console.log("Games are visible");
 }
 
 /***********************************************/
