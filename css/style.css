@@ -1,3 +1,149 @@
+
+/*ChatGPT css*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #c9f3ff, #f4fbff);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#title h1 {
+    font-size: 3rem;
+    color: #2d5baf;
+}
+
+#title p {
+    margin-top: 8px;
+    color: #666;
+}
+
+#loginButtons {
+    margin-bottom: 25px;
+}
+
+button {
+    background: #4c6ef5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 22px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #3b5bdb;
+    transform: translateY(-2px);
+}
+
+.logout {
+    background: #ef4444;
+}
+
+.logout:hover {
+    background: #dc2626;
+}
+
+#container {
+    width: 420px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    overflow: hidden;
+    visibility: hidden;
+}
+
+#registrationTitle {
+    background: #4c6ef5;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
+
+#registrationForm {
+    padding: 30px;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4c6ef5;
+    box-shadow: 0 0 5px rgba(76,110,245,.3);
+}
+
+#registrationForm button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+#databaseOutputCheck {
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+#mainTableHighscore {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#mainTableHighscore th,
+#mainTableHighscore td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#mainTableHighscore th {
+    background: #4c6ef5;
+    color: white;
+}
+
+.link {
+    color: #4c6ef5;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/*
 body {
   background-color: #bae7ee;
   color: #000000;
@@ -100,3 +246,4 @@ button:hover {
   text-decoration-line: underline;
   color: #52425abe;
 }
+*/
