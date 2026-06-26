@@ -257,7 +257,7 @@ function playerSprite() {
     //Player
     player = new Sprite(250, 250, playerSize, playerSize, 'd');
     player.image = (imgPlayerCat);
-    imgPlayerCat.resize(playerSize, playerSize);
+    imgPlayerCat.resize(playerSize + 15, playerSize + 15);
 }
 
 function deletePlayerSprite() {
@@ -299,7 +299,7 @@ function enemySprite() {
     for (i = 0; i < numberOfEnemyBallsUp; i++) {
         enemyBallUp = new Sprite(random(25, 475), random(-200, -10), enemyBallDiameter, 'k');
         enemyBallUp.image = (imgSnowBall);
-        imgSnowBall.resize(enemyBallDiameter, enemyBallDiameter);
+        imgSnowBall.resize(enemyBallDiameter + 15, enemyBallDiameter + 15);
         enemyBallUp.strokeWeight = 0;
         enemyBallUp.vel.y = random(minBallSpeed, maxBallSpeed);
         enemyBallSpriteArray.push(enemyBallUp);
@@ -313,7 +313,7 @@ function enemySprite() {
             //
             enemyBeamUp = new Sprite(enemyBeamX + random(-8, 8), -(random(5, 10) * ii) - 40, enemyBallDiameter, 'k');
             enemyBeamUp.image = (imgSnowBall);
-            imgSnowBall.resize(enemyBallDiameter, enemyBallDiameter);
+            imgSnowBall.resize(enemyBallDiameter + 15, enemyBallDiameter + 15);
             enemyBeamUp.strokeWeight = 0;
             enemyBeamUp.vel.y = 0;
             enemyBeamSpriteArray.push(enemyBeamUp);

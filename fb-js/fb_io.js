@@ -4,9 +4,11 @@
 // This function creates a listener to check if users are logged into google; if not creates a popup
 /**************************************************************/
 let GLOBAL_user;
-let indexPage = true;
+let indexPage = false;
 //Check what page on
-
+function inIndexPage() {
+    indexPage = true;
+}
 
 //Create listener
 async function fb_login() {
