@@ -147,6 +147,19 @@ input:focus {
   text-align: center;
 }
 
+.warning {
+    width: 90%;
+    margin: 15px auto;
+    padding: 12px 15px;
+    background-color: #fff3cd;
+    border: 1px solid #facc15;
+    border-left: 6px solid #f59e0b;
+    color: #92400e;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
 
 /*
 body {
