@@ -32,7 +32,7 @@ body {
     color: #666;
 }
 
-#loginButtons {
+#loginButton {
     margin-bottom: 25px;
 }
 
@@ -51,14 +51,6 @@ button {
 button:hover {
     background: #3b5bdb;
     transform: translateY(-2px);
-}
-
-.logout {
-    background: #ef4444;
-}
-
-.logout:hover {
-    background: #dc2626;
 }
 
 #container {
