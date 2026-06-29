@@ -1,5 +1,5 @@
+//Real rules
 {
-    //Real rules
     "rules": {
         ".read": "root.child('users').child(auth.uid).child('role').val() === 'admin' || auth.uid === 'lnaUwkd493YAAuYOCtv2U0RYQIB2'",
         ".write": "root.child('users').child(auth.uid).child('role').val() === 'admin' || auth.uid === 'lnaUwkd493YAAuYOCtv2U0RYQIB2'",
