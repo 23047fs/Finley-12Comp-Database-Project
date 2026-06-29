@@ -1,14 +1,31 @@
 console.log("Running GameWeb");
 
 /***********************************************/
+//Login Check
+/***********************************************/
+//Checks if user has info in firebase already
+function fb_checkIfPrevious() {
+    let uid = GLOBAL_user["uid"];
+    //Read if name in database
+    firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
+}
+//Check
+function fb_userNameCheck(snapshot) {
+    let dbData = snapshot.val();
+    //If none
+    if (!dbData) {
+        //HTML output
+        const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
+        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
+    } else {
+        //If done previously skip the wait
+        window.location.href = "tables.html"; //Move pages
+    }
+}
+
+/***********************************************/
 //Html Information
 /***********************************************/
-
-//Html output
-const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
-const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
-const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
-
 //Get users data and add to database
 async function fb_write() {
     //Get uid
@@ -49,41 +66,24 @@ async function fb_write() {
     HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a></h1><h1>You are now registered</h1></div>';
 }
 
-//Checks if user has info in firebase already
-function fb_checkIfPrevious() {
-    let uid = GLOBAL_user["uid"];
-    firebase.database().ref('/users/' + uid + '/userName').once('value', fb_userNameCheck, fb_error);
-}
-
-function fb_userNameCheck(snapshot) {
-    let dbData = snapshot.val();
-    if (!dbData) {
-        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
-    } else {
-        //Skip the wait
-        window.location.href = "tables.html";
-    }
-}
-
 /***********************************************/
-//Geo game highscores
+//Geo Game Highscores
 /***********************************************/
 //Listener to check is highscore changes
 function fb_geoGameHighscoreListener() {
     firebase.database().ref('/geoGame').on('value', fb_changeGeoHighscoreTable, fb_error);
 }
 //Arrays for top 5
-//Name
-let userArrayGeo = [];
-//Score
-let userScoreGeo = [];
-//Photo
-let userPhotoGeo = [];
+let userNameGeo = []; //Name
+let userScoreGeo = []; //Score
+let userPhotoGeo = []; //Photo
 //Change the geo game table
 async function fb_changeGeoHighscoreTable() {
-    userArrayGeo = [];
+    //Reset the arrays
+    userNameGeo = [];
     userScoreGeo = [];
     userPhotoGeo = [];
+    //Read the top 5
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToFirst(5).once('value', readGeo, fb_error);
     //Table
     //Make a variable for the table    
@@ -92,14 +92,16 @@ async function fb_changeGeoHighscoreTable() {
     geoTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
     for (let i = 0; i < 5; i++) {
-        if (userArrayGeo[i] != null) {
-            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userArrayGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+        if (userNameGeo[i] != null) {
+            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userNameGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
             geoTable += '<tr><td>Empty</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
     geoTable += '</table>';
+    //HTML output
+    const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
     //Add it to HTML
     HTML_OUTPUT_GEO.innerHTML = geoTable;
 }
@@ -110,7 +112,7 @@ function readGeo(snapshot) {
 //add
 function showGeo(child) {
     //Get the userName from the uid and add it
-    userArrayGeo.push(child.val()["userName"]);
+    userNameGeo.push(child.val()["userName"]);
     //Set the highscore
     userScoreGeo.push(Math.abs(child.val()["highscore"]));
     //PhotoURL
@@ -120,22 +122,25 @@ function showGeo(child) {
         userPhotoGeo.push(String("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"));
     };
 }
+
 /***********************************************/
-//Game highscores
+//Game Highscores // game - Snowball game
 /***********************************************/
 //Listener to check is highscore changes
 function fb_gameHighscoreListener() {
     firebase.database().ref('/game').on('value', fb_changeGameHighscoreTable, fb_error);
 }
 //Arrays for top
-let userArrayGame = [];
-let userScoreGame = [];
-let userPhotoGame = [];
+let userNameGame = []; //Name
+let userScoreGame = []; //Score
+let userPhotoGame = []; //Photo
 //Change the geo game table
 async function fb_changeGameHighscoreTable() {
-    userArrayGame = [];
+    //Reset arrays
+    userNameGame = [];
     userScoreGame = [];
     userPhotoGame = [];
+    //Read top 5
     await firebase.database().ref('/game').orderByChild("highscore").limitToFirst(5).once('value', readGame, fb_error);
     //Table
     //Make a variable for the table    
@@ -144,14 +149,16 @@ async function fb_changeGameHighscoreTable() {
     gameTable += '<table id="mainTableHighscore"><tr><th>Photo</th><th>Name</th><th>Score</th></tr>';
     //If score is there add it
     for (let i = 0; i < 5; i++) {
-        if (userArrayGame[i] != null) {
-            gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userArrayGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
+        if (userNameGame[i] != null) {
+            gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userNameGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
             gameTable += '<tr><td>Empty</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
     gameTable += '</table>';
+    //HTML output
+    const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
     //Add it to HTML
     HTML_OUTPUT_GAME.innerHTML = gameTable;
 }
@@ -162,7 +169,7 @@ function readGame(snapshot) {
 //add
 function showGame(child) {
     //Get the userName from the uid and add it
-    userArrayGame.push(child.val()["userName"]);
+    userNameGame.push(child.val()["userName"]);
     //Set the highscore
     userScoreGame.push(Math.abs(child.val()["highscore"]));
     //PhotoURL
