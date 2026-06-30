@@ -6,12 +6,10 @@
 /*******************************************************/
 //Firebase
 /*******************************************************/
-
-
 //Get uid
 function endFirebase() {
     //Get uid
-    let uid = GLOBAL_user["uid"];
+    let uid = GLOBAL_user["uid"]; //Not global var
     //Check if new score is higher than old one
     firebase.database().ref('/game/' + uid + '/highscore').once('value', gameOldScore, fb_error);
     //Set name
@@ -41,6 +39,7 @@ function getNameGame(snapshot) {
     //Set name
     firebase.database().ref('/game/' + uid + '/userName').set(name);
 }
+
 
 /*******************************************************/
 // setup()

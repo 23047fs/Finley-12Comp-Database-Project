@@ -1,5 +1,8 @@
 
 /*ChatGPT css*/
+/* =========================================
+   RESET
+========================================= */
 
 * {
     margin: 0;
@@ -7,91 +10,118 @@
     box-sizing: border-box;
 }
 
+/* =========================================
+   BODY
+========================================= */
+
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #c9f3ff, #f4fbff);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d7efff, #eef7ff);
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
+    padding: 40px 20px;
 }
+
+/* =========================================
+   PAGE TITLE
+========================================= */
 
 #title {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 #title h1 {
-    font-size: 3rem;
-    color: #2d5baf;
+    font-size: 3.5rem;
+    color: #1e40af;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 #title p {
-    margin-top: 8px;
+    margin-top: 10px;
     color: #666;
+    font-size: 1.1rem;
 }
+
+/* =========================================
+   LOGIN BUTTONS
+========================================= */
 
 #loginButton {
-    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
 }
 
+/* =========================================
+   BUTTONS
+========================================= */
+
 button {
-    background: #4c6ef5;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
     color: white;
     border: none;
     border-radius: 10px;
-    padding: 12px 22px;
-    margin: 5px;
+    padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
-    transition: .3s;
+    transition: all .25s ease;
 }
 
 button:hover {
-    background: #3b5bdb;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, .25);
 }
 
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
 #container {
-    width: 630px;
+    width: min(95%, 900px);
+    margin: auto;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
-    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+    padding: 30px;
     visibility: hidden;
 }
 
+/* =========================================
+   REGISTRATION
+========================================= */
+
 #registrationTitle {
-    background: #4c6ef5;
-    color: white;
     text-align: center;
-    padding: 18px;
+    color: #2563eb;
+    margin-bottom: 20px;
 }
 
 #registrationForm {
-    padding: 30px;
+    max-width: 550px;
+    margin: auto;
 }
 
 label {
     display: block;
-    margin-top: 18px;
-    margin-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 15px;
 }
 
 input:focus {
     outline: none;
-    border-color: #4c6ef5;
-    box-shadow: 0 0 5px rgba(76,110,245,.3);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .15);
 }
 
 #registrationForm button {
@@ -99,60 +129,176 @@ input:focus {
     margin-top: 25px;
 }
 
+/* =========================================
+   DATABASE OUTPUT
+========================================= */
+
 #databaseOutputCheck {
     text-align: center;
-    padding: 20px;
+    margin-top: 25px;
     font-weight: bold;
 }
 
-.img {
-    width: 80px;
-    border-radius: 50%;
+/* =========================================
+   HIGHSCORE PAGE
+========================================= */
+
+#highscoreTitle {
+    text-align: center;
+    margin-bottom: 30px;
 }
+
+#highscoreTitle h1 {
+    color: #2563eb;
+    font-size: 2.4rem;
+}
+
+/* =========================================
+   GAME SECTIONS
+========================================= */
+
+#geo,
+#game {
+    background: #f8fbff;
+    border: 2px solid #dbeafe;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: .25s ease;
+}
+
+#geo:hover,
+#game:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .08);
+}
+
+/* =========================================
+   LINKS
+========================================= */
+
+.link {
+    color: #2563eb;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* =========================================
+   TABLES
+========================================= */
 
 #mainTableHighscore {
     width: 100%;
     border-collapse: collapse;
-}
-
-#mainTableHighscore th,
-#mainTableHighscore td {
-    border: 1px solid #ddd;
-    padding: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 #mainTableHighscore th {
-    background: #4c6ef5;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
     color: white;
+    padding: 15px;
+    text-align: center;
 }
 
-.link {
-    color: #4c6ef5;
-    text-decoration: none;
+#mainTableHighscore td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.link:hover {
-    text-decoration: underline;
+#mainTableHighscore tr:nth-child(even) {
+    background: #f8fafc;
 }
 
-#highscoreTitle {
-  text-align: center;
+#mainTableHighscore tr:hover {
+    background: #dbeafe;
 }
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #3b82f6;
+}
+
+/* =========================================
+   WARNING BOX
+========================================= */
 
 .warning {
-    width: 90%;
-    margin: 15px auto;
-    padding: 12px 15px;
-    background-color: #fff3cd;
-    border: 1px solid #facc15;
-    border-left: 6px solid #f59e0b;
+    margin: 20px auto;
+    padding: 14px;
+    background: #fff7d6;
     color: #92400e;
+    border-left: 6px solid #f59e0b;
     border-radius: 8px;
-    font-size: 15px;
     font-weight: 600;
     text-align: center;
 }
 
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    #title h1 {
+        font-size: 2.6rem;
+    }
+
+    #container {
+        padding: 20px;
+    }
+
+    #registrationForm {
+        max-width: 100%;
+    }
+
+    #geo,
+    #game {
+        padding: 18px;
+    }
+
+    #mainTableHighscore {
+        font-size: 14px;
+    }
+
+    #mainTableHighscore th,
+    #mainTableHighscore td {
+        padding: 10px;
+    }
+
+    .img {
+        width: 55px;
+        height: 55px;
+    }
+
+    #loginButton {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        max-width: 320px;
+    }
+}
 /*
 body {
   background-color: #bae7ee;

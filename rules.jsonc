@@ -7,19 +7,19 @@
         "game": {
             ".read": true,
             "$uid": {
-                ".write": "(auth != null && auth.uid === $uid)"
+                ".write": "auth.uid === $uid"
             }
         },
         "geoGame": {
             ".read": true,
             "$uid": {
-                ".write": "(auth != null && auth.uid === $uid)"
+                ".write": "auth.uid === $uid"
             }
         },
         "users": {
             "$uid": {
-                ".read": "(auth != null && auth.uid === $uid)",
-                ".write": "(auth != null && auth.uid === $uid)"
+                ".read": "auth.uid === $uid",
+                ".write": "auth.uid === $uid"
                 //Allows only your uid
             }
         }

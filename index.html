@@ -19,15 +19,15 @@
   <script src="fb-js/fb_io.js"></script>
   <!-- firebase end ******************************************-->
 </head>
-
-<body onload="inIndexPage()">
+<body>
   <div id="title">
     <h1>Project</h1>
     <p>Login and register to begin.</p>
   </div>
   <br>
   <div id="loginButton">
-    <button onclick="fb_login()">Login</button>
+    <button onclick="fb_login()">Login / Change name</button>
+    <button onclick="fb_login(); inIndexPage();">Skip</button>
   </div>
   <br>
   <div id="container">
@@ -41,8 +41,8 @@
       <!--User log in-->
       <form id="userForm" onsubmit="fb_write(); return false;">
         <!--User name-->
-        <label for="userName">Your User Name:</label>
-        <input type="text" id="userName" name="userName" required>
+        <label for="userName">Your User Name (3-20 characters):</label>
+        <input type="text" id="userName" name="userName" minlength="3" maxlength="20" required>
         <br>
         <!--User age-->
         <label for="userAge">Your Age (Minimum age of 10):</label>
