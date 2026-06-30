@@ -14,8 +14,6 @@ function fb_userNameCheck(snapshot) {
     let dbData = snapshot.val();
     //If none
     if (!dbData) {
-        //HTML output
-        const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
         HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
     } else {
         //If done previously skip the wait
@@ -26,6 +24,11 @@ function fb_userNameCheck(snapshot) {
 /***********************************************/
 //Html Information
 /***********************************************/
+//Html output
+const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
+const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
+const HTML_OUTPUT_CHECK = document.getElementById("databaseOutputCheck");
+
 //Get users data and add to database
 async function fb_write() {
     //Get uid
@@ -100,8 +103,6 @@ async function fb_changeGeoHighscoreTable() {
     }
     //Finish the table
     geoTable += '</table>';
-    //HTML output
-    const HTML_OUTPUT_GEO = document.getElementById("databaseOutputGeo");
     //Add it to HTML
     HTML_OUTPUT_GEO.innerHTML = geoTable;
 }
@@ -157,8 +158,6 @@ async function fb_changeGameHighscoreTable() {
     }
     //Finish the table
     gameTable += '</table>';
-    //HTML output
-    const HTML_OUTPUT_GAME = document.getElementById("databaseOutputGame");
     //Add it to HTML
     HTML_OUTPUT_GAME.innerHTML = gameTable;
 }
