@@ -11,8 +11,6 @@ console.log("Running the game");
 /*******************************************************/
 //Firebase + END
 /*******************************************************/
-
-
 // End game code
 function endGame(_player, _obstacle) {
     console.log("Game ended, you got " + score + " points.")
@@ -21,7 +19,7 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
     // Put your database writes here:
     //Get uid
-    let uid = GLOBAL_user["uid"];
+    let uid = GLOBAL_user["uid"]; //Not global var
     //Check if new score is higher than old one
     firebase.database().ref('/geoGame/' + uid + '/highscore').once('value', geoOldScore, fb_error);
     //Set name
@@ -29,7 +27,6 @@ function endGame(_player, _obstacle) {
     //Add photo
     firebase.database().ref('/geoGame/' + uid + '/photoURL').set(GLOBAL_user["photoURL"]);
 }
-
 //Read old score
 function geoOldScore(snapshot) {
     //Get uid

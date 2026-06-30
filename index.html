@@ -41,8 +41,8 @@
       <!--User log in-->
       <form id="userForm" onsubmit="fb_write(); return false;">
         <!--User name-->
-        <label for="userName">Your User Name:</label>
-        <input type="text" id="userName" name="userName" required>
+        <label for="userName">Your User Name (3-20 charters):</label>
+        <input type="text" id="userName" name="userName" minlength="3" maxlength="20" required>
         <br>
         <!--User age-->
         <label for="userAge">Your Age (Minimum age of 10):</label>
