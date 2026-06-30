@@ -19,14 +19,15 @@
   <script src="fb-js/fb_io.js"></script>
   <!-- firebase end ******************************************-->
 </head>
-<body onload="inIndexPage()">
+<body>
   <div id="title">
     <h1>Project</h1>
     <p>Login and register to begin.</p>
   </div>
   <br>
   <div id="loginButton">
-    <button onclick="fb_login()">Login</button>
+    <button onclick="fb_login()">Login / Change name</button>
+    <button onclick="fb_login(); inIndexPage();">Skip</button>
   </div>
   <br>
   <div id="container">

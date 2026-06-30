@@ -14,7 +14,7 @@ function fb_userNameCheck(snapshot) {
     let dbData = snapshot.val();
     //If none
     if (!dbData) {
-        HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1>You are not registered yet</h1></div>';
+        alert("You have not previously logged in, please login");
     } else {
         //If done previously skip the wait
         window.location.href = "tables.html"; //Move pages
