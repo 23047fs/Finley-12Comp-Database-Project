@@ -96,9 +96,11 @@ async function fb_changeGeoHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 5; i++) {
         if (userNameGeo[i] != null) {
-            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userNameGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
+            geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '">' + '</td><td> ' + (i + 1) + ': ' + userNameGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
-            geoTable += '<tr><td>'+userPhotoGeo[i]+'</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            //Add the image if empty
+            userPhotoGeo.push("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png");
+            geoTable += '<tr><td><img class="img" src="' + userPhotoGeo[i] + '"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
@@ -115,13 +117,9 @@ function showGeo(child) {
     //Get the userName from the uid and add it
     userNameGeo.push(child.val()["userName"]);
     //Set the highscore
-    userScoreGeo.push(Math.abs(child.val()["highscore"]));
+    userScoreGeo.push((child.val()["highscore"]) * -1);
     //PhotoURL
-    if (child.val()["photoURL"] != null) {
-        userPhotoGeo.push(child.val()["photoURL"]);
-    } else {
-        userPhotoGeo.push(String("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"));
-    };
+    userPhotoGeo.push(child.val()["photoURL"]);
 }
 
 /***********************************************/
@@ -151,9 +149,11 @@ async function fb_changeGameHighscoreTable() {
     //If score is there add it
     for (let i = 0; i < 5; i++) {
         if (userNameGame[i] != null) {
-            gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '"</img>' + '</td><td> ' + (i + 1) + ': ' + userNameGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
+            gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '">' + '</td><td> ' + (i + 1) + ': ' + userNameGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
-            gameTable += '<tr><td>'+userPhotoGame[i]+'</td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            //Add the image if empty
+            userPhotoGame.push("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png");
+            gameTable += '<tr><td><img class="img" src="' + userPhotoGame[i] + '"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
@@ -170,13 +170,10 @@ function showGame(child) {
     //Get the userName from the uid and add it
     userNameGame.push(child.val()["userName"]);
     //Set the highscore
-    userScoreGame.push(Math.abs(child.val()["highscore"]));
+    userScoreGame.push((child.val()["highscore"]) * -1);
     //PhotoURL
-    if (child.val()["photoURL"] != null) {
-        userPhotoGame.push(child.val()["photoURL"]);
-    } else {
-        userPhotoGame.push(String("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"));
-    };
+    userPhotoGame.push(child.val()["photoURL"]);
+
 }
 
 
