@@ -28,6 +28,7 @@ function fb_handleLogin(_user) {
         console.log("User is logged in");
     };
     if (indexPage === true) {
+        //If in index page check if previously registered
         fb_checkIfPrevious();
         indexPage = false;
     };
