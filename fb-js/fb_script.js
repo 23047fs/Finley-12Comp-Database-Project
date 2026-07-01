@@ -99,8 +99,7 @@ async function fb_changeGeoHighscoreTable() {
             geoTable += '<tr><td>' + '<img class="img" src="' + userPhotoGeo[i] + '">' + '</td><td> ' + (i + 1) + ': ' + userNameGeo[i] + '</td><td>' + (i + 1) + ': ' + userScoreGeo[i] + '</td></tr>';
         } else {
             //Add the image if empty
-            userPhotoGeo.push("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png");
-            geoTable += '<tr><td><img class="img" src="' + userPhotoGeo[i] + '"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            geoTable += '<tr><td><img class="img" src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
@@ -152,8 +151,7 @@ async function fb_changeGameHighscoreTable() {
             gameTable += '<tr><td>' + '<img class="img" src="' + userPhotoGame[i] + '">' + '</td><td> ' + (i + 1) + ': ' + userNameGame[i] + '</td><td>' + (i + 1) + ': ' + userScoreGame[i] + '</td></tr>';
         } else {
             //Add the image if empty
-            userPhotoGame.push("https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png");
-            gameTable += '<tr><td><img class="img" src="' + userPhotoGame[i] + '"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
+            gameTable += '<tr><td><img class="img" src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Black_question_mark.png"></td><td>' + (i + 1) + ': ' + 'Empty' + '</td><td> ' + (i + 1) + ': ' + 'Empty' + '</td></tr>';
         }
     }
     //Finish the table
