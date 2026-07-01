@@ -171,9 +171,7 @@ function showGame(child) {
     userScoreGame.push((child.val()["highscore"]) * -1);
     //PhotoURL
     userPhotoGame.push(child.val()["photoURL"]);
-
 }
-
 
 
 //Characters that shouldn't be used
