@@ -259,56 +259,6 @@ input:focus {
     box-shadow: 0 0 12px rgba(244,196,48,.35);
 }
 
-#mainTableHighscore tr:nth-child(2) td:nth-child(2)::before {
-    content: "🥇 ";
-}
-
-/* Silver */
-#mainTableHighscore tr:nth-child(3) {
-    background: #f5f7fa;
-    font-weight: 700;
-}
-
-#mainTableHighscore tr:nth-child(3):hover {
-    background: #eceff3;
-}
-
-#mainTableHighscore tr:nth-child(3) td:first-child {
-    border-left-color: #b8bcc5;
-}
-
-#mainTableHighscore tr:nth-child(3) .img {
-    border-color: #b8bcc5;
-    box-shadow: 0 0 12px rgba(184,188,197,.35);
-}
-
-#mainTableHighscore tr:nth-child(3) td:nth-child(2)::before {
-    content: "🥈 ";
-}
-
-/* Bronze */
-#mainTableHighscore tr:nth-child(4) {
-    background: #fdf5ef;
-    font-weight: 700;
-}
-
-#mainTableHighscore tr:nth-child(4):hover {
-    background: #f7ede5;
-}
-
-#mainTableHighscore tr:nth-child(4) td:first-child {
-    border-left-color: #b87333;
-}
-
-#mainTableHighscore tr:nth-child(4) .img {
-    border-color: #b87333;
-    box-shadow: 0 0 12px rgba(184,115,51,.35);
-}
-
-#mainTableHighscore tr:nth-child(4) td:nth-child(2)::before {
-    content: "🥉 ";
-}
-
 /* =========================================
    PROFILE IMAGE
 ========================================= */
