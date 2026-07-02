@@ -197,7 +197,7 @@ input:focus {
     border-collapse: collapse;
     margin-top: 20px;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 #mainTableHighscore th {
@@ -207,18 +207,106 @@ input:focus {
     text-align: center;
 }
 
+#mainTableHighscore th:first-child {
+    border-top-left-radius: 12px;
+}
+
+#mainTableHighscore th:last-child {
+    border-top-right-radius: 12px;
+}
+
 #mainTableHighscore td {
     padding: 14px;
     text-align: center;
     border-bottom: 1px solid #e5e7eb;
+    border-left: 8px solid transparent;
 }
 
-#mainTableHighscore tr:nth-child(even) {
+#mainTableHighscore tr {
+    transition: background-color .25s ease;
+}
+
+/* Alternate row colours (excluding header and podium) */
+#mainTableHighscore tr:nth-child(n+5):nth-child(even) {
     background: #f8fafc;
 }
 
-#mainTableHighscore tr:hover {
+/* Hover (excluding header and podium) */
+#mainTableHighscore tr:nth-child(n+5):hover {
     background: #dbeafe;
+}
+
+/* =========================================
+   PODIUM
+========================================= */
+
+/* Gold */
+#mainTableHighscore tr:nth-child(2) {
+    background: #fff9e6;
+    font-weight: 700;
+}
+
+#mainTableHighscore tr:nth-child(2):hover {
+    background: #fff3cf;
+}
+
+#mainTableHighscore tr:nth-child(2) td:first-child {
+    border-left-color: #f4c430;
+}
+
+#mainTableHighscore tr:nth-child(2) .img {
+    border-color: #f4c430;
+    box-shadow: 0 0 12px rgba(244,196,48,.35);
+}
+
+#mainTableHighscore tr:nth-child(2) td:nth-child(2)::before {
+    content: "🥇 ";
+}
+
+/* Silver */
+#mainTableHighscore tr:nth-child(3) {
+    background: #f5f7fa;
+    font-weight: 700;
+}
+
+#mainTableHighscore tr:nth-child(3):hover {
+    background: #eceff3;
+}
+
+#mainTableHighscore tr:nth-child(3) td:first-child {
+    border-left-color: #b8bcc5;
+}
+
+#mainTableHighscore tr:nth-child(3) .img {
+    border-color: #b8bcc5;
+    box-shadow: 0 0 12px rgba(184,188,197,.35);
+}
+
+#mainTableHighscore tr:nth-child(3) td:nth-child(2)::before {
+    content: "🥈 ";
+}
+
+/* Bronze */
+#mainTableHighscore tr:nth-child(4) {
+    background: #fdf5ef;
+    font-weight: 700;
+}
+
+#mainTableHighscore tr:nth-child(4):hover {
+    background: #f7ede5;
+}
+
+#mainTableHighscore tr:nth-child(4) td:first-child {
+    border-left-color: #b87333;
+}
+
+#mainTableHighscore tr:nth-child(4) .img {
+    border-color: #b87333;
+    box-shadow: 0 0 12px rgba(184,115,51,.35);
+}
+
+#mainTableHighscore tr:nth-child(4) td:nth-child(2)::before {
+    content: "🥉 ";
 }
 
 /* =========================================
@@ -299,107 +387,3 @@ input:focus {
         max-width: 320px;
     }
 }
-/*
-body {
-  background-color: #bae7ee;
-  color: #000000;
-  font-family: Arial, sans-serif;
-  padding: 2rem;
-}
-
-label {
-  display: block;
-  margin-top: 1rem;
-}
-
-input {
-  padding: 0.5rem;
-  margin-top: 0.3rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-button {
-  margin-top: 1.5rem;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #7886c5;
-}
-
-.img {
-  border-radius: 20%;
-  width: 75px;
-}
-
-#mainTableHighscore {
-  width: auto;
-  padding: 8px;
-  text-align: left;
-  border: 1px solid black;
-}
-
-#container {
-  width: 100%;
-  overflow: auto;
-  border: 1px solid black;
-  visibility: hidden;
-}
-
-#title {
-  text-align: center;
-  size: 50px;
-  border: 1px solid black;
-}
-
-#registrationTitle {
-  text-align: center;
-  size: 35px;
-  border-bottom: 1px solid black;
-}
-
-#registrationForm {
-  text-align: center;
-  border-bottom: 1px solid black;
-}
-
-#highscoreTitle {
-  text-align: center;
-  size: 35px;
-  border: 1px solid black;
-}
-
-#geo {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-}
-
-#game {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-}
-
-.tableLink {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.link {
-  text-decoration-line: underline;
-  color: black;
-}
-
-.link:hover {
-  text-decoration-line: underline;
-  color: #52425abe;
-}
-*/
