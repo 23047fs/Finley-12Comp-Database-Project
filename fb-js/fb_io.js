@@ -9,7 +9,6 @@ let indexPage = false;
 function inIndexPage() {
     indexPage = true;
 }
-
 //Create listener
 async function fb_login() {
     authenticationListener = await firebase.auth().onAuthStateChanged(fb_handleLogin, fb_error);

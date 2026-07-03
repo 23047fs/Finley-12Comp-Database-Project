@@ -66,7 +66,7 @@ async function fb_write() {
     console.log("Data has been reset");
 
     //Insert next link
-    HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a></h1><h1>You are now registered</h1></div>';
+    HTML_OUTPUT_CHECK.innerHTML = '<div class="tableLink"><h1><a class="link" href="tables.html">Next</a><br>You are now registered</h1></div>';
 }
 
 /***********************************************/
@@ -111,7 +111,7 @@ async function fb_changeGeoHighscoreTable() {
 function readGeo(snapshot) {
     snapshot.forEach(showGeo);
 }
-//add
+//add to arrays
 function showGeo(child) {
     //Get the userName from the uid and add it
     userNameGeo.push(child.val()["userName"]);
@@ -163,7 +163,7 @@ async function fb_changeGameHighscoreTable() {
 function readGame(snapshot) {
     snapshot.forEach(showGame);
 }
-//add
+//add to arrays
 function showGame(child) {
     //Get the userName from the uid and add it
     userNameGame.push(child.val()["userName"]);
