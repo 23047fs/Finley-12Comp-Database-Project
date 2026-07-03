@@ -86,7 +86,7 @@ async function fb_changeGeoHighscoreTable() {
     userNameGeo = [];
     userScoreGeo = [];
     userPhotoGeo = [];
-    //Read the top 5
+    //Read the top 5 in order of score
     await firebase.database().ref('/geoGame').orderByChild("highscore").limitToFirst(5).once('value', readGeo, fb_error);
     //Table
     //Make a variable for the table    
@@ -138,7 +138,7 @@ async function fb_changeGameHighscoreTable() {
     userNameGame = [];
     userScoreGame = [];
     userPhotoGame = [];
-    //Read top 5
+    //Read the top 5 in order of score
     await firebase.database().ref('/game').orderByChild("highscore").limitToFirst(5).once('value', readGame, fb_error);
     //Table
     //Make a variable for the table    
