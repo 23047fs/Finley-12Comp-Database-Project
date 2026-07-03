@@ -187,7 +187,6 @@ input:focus {
     color: #1d4ed8;
     text-decoration: underline;
 }
-
 /* =========================================
    TABLES
 ========================================= */
@@ -226,21 +225,20 @@ input:focus {
     transition: background-color .25s ease;
 }
 
-/* Alternate row colours (excluding header and podium) */
-#mainTableHighscore tr:nth-child(n+5):nth-child(even) {
+/* Alternate row colours (excluding header and gold row) */
+#mainTableHighscore tr:nth-child(n+3):nth-child(even) {
     background: #f8fafc;
 }
 
-/* Hover (excluding header and podium) */
-#mainTableHighscore tr:nth-child(n+5):hover {
+/* Hover (excluding header and gold row) */
+#mainTableHighscore tr:nth-child(n+3):hover {
     background: #dbeafe;
 }
 
 /* =========================================
-   PODIUM
+   GOLD WINNER
 ========================================= */
 
-/* Gold */
 #mainTableHighscore tr:nth-child(2) {
     background: #fff9e6;
     font-weight: 700;
@@ -251,12 +249,13 @@ input:focus {
 }
 
 #mainTableHighscore tr:nth-child(2) td:first-child {
-    border-left-color: #f4c430;
+    border-left: 8px solid #f4c430;
 }
 
-#mainTableHighscore tr:nth-child(2) .img {
-    border-color: #f4c430;
-    box-shadow: 0 0 12px rgba(244,196,48,.35);
+#mainTableHighscore tr:nth-child(2) img {
+    border: 3px solid #f4c430;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(244, 196, 48, .35);
 }
 
 /* =========================================
